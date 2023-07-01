@@ -1,4 +1,5 @@
 //jshint esversion:6
+require("dotenv").config();//put at top
 const express=require("express");
 const  ejs=require("ejs");
 const  bodyParser=require("body-parser");
@@ -10,6 +11,8 @@ app.use(express.static("public"));
 app.set("view engine","ejs");
 app.use(bodyParser.urlencoded({extended:true}));
 
+console.log(process.env.API_KEY);
+
 mongoose.connect("mongodb://127.0.0.1:27017/userDB", { useNewUrlParser: true, useUnifiedTopology: true })
   .then(() => {
     console.log('Connected successfully to the MongoDB server')});
@@ -20,8 +23,8 @@ const userSchema=new mongoose.Schema({
   password:String
 })
 
-const secret="this is our little scet";
-userSchema.plugin(encrypt,{secret:secret, encryptedFields: ["password"]});
+
+userSchema.plugin(encrypt,{secret:process.env.SECRET, encryptedFields: ["password"]});//for encryption
 
 const User=mongoose.model("user",userSchema);
 
@@ -57,7 +60,7 @@ app.post("/login",function(req,res)
         const password=req.body.password
           User.findOne({email:username})
           .then((foundUser) => {
-            if(foundUser.password===password)
+            if(foundUser.password===password)// here if we log founduser.;password then we will get a normal decrypted version of password because mongoose decrypts it here to check the password 
             {
               res.render("secrets");
             }

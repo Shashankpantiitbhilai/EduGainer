@@ -1,0 +1,473 @@
+<%- include('partials/header') %>
+
+
+  
+
+
+  <!-- Favicons -->
+
+
+
+ 
+
+  <style>
+    @media (max-width: 767px) {
+      .card-intro {
+        display: block;
+        margin-bottom: 20px;
+      }
+      
+      .card-intro .col-6 {
+        flex: 100%;
+        max-width: 100%;
+      }
+    }
+    @media (max-width: 767px) {
+      .card-intro {
+        display: block;
+        margin-bottom: 20px;
+      }
+ 
+      .card-intro .col-6 {
+        flex: 100%;
+        max-width: 100%;
+      }
+      @keyframes bounce {
+        0%   { transform: scale(1,1) translateY(0); }
+        10%  { transform: scale(1.1,.9) translateY(0); }
+        30%  { transform: scale(.9,1.1)   translateY(-55px);}
+        50%  { transform: scale(1.05,.95) translateY(0); }
+        58%  { transform: scale(1,1) translateY(-7px); }
+        65%  { transform: scale(1,1) translateY(0);}
+        100% { transform: scale(1,1) translateY(0);}
+    }
+  
+  .E {
+  animation: bounce 1s ease infinite;
+  }
+  
+  .d {
+  animation: bounce 1s ease infinite .1s;
+  }
+  .u {
+    animation: bounce 1s ease infinite .2s;
+  }
+  
+  .G {
+    animation: bounce 1s ease infinite .3s;
+  }
+  
+  .a{
+    animation: bounce 1s ease infinite .4s;
+  }
+  
+  .i {
+    animation: bounce 1s ease infinite .5s;
+  }
+  
+  .n {
+    animation: bounce 1s ease infinite .5s;
+  }
+  .e{
+    animation: bounce 1s ease infinite .5s;
+  }
+  .r {
+    animation: bounce 1s ease infinite .5s;
+  }
+  .s {
+    animation: bounce 1s ease infinite .5s;
+  }
+  
+ 
+  .bouncing-text:before, .bouncing-text:after {
+    content:"";
+    position: absolute;
+    background-color: rgba(0,0,0,0.4);
+    width: 50px;
+    height:5px;
+    border-radius:50%;
+    top:82px;
+    z-index:-1;
+  }
+  
+  .shadow, .shadow-two {
+    position: absolute;
+    top:82px;
+    z-index:-1;
+  }
+  
+  .shadow:before, .shadow:after, .shadow-two:before, .shadow-two:after {
+    content:"";
+    position: absolute;
+    background-color: rgba(0,0,0,0.4);
+    width: 30px;
+    height:5px;
+    border-radius:50%;
+    top:0;  
+  }
+  
+  .bouncing-text:before {
+    left:0;
+    animation: scale 1s linear infinite;
+  }
+  
+  @keyframes scale {
+    0% {transform: scaleX(1);}
+    25% {transform: scaleX(0.4);}
+    50% {transform: scaleX(1);}
+    75% {transform: scaleX(0.9);}
+    100% {transform: scaleX(1);}
+  }
+  
+  .bouncing-text:after {
+    left: 57px;
+    animation: scale 1s linear infinite .1s;
+  }
+  
+  .shadow:before {
+    left: 116px;
+    animation: scale 1s linear infinite .2s;
+  }
+  
+  .shadow:after {
+    left:175px;
+    animation: scale 1s linear infinite .3s;
+  }
+  
+  .shadow-two:before {
+    left:232px;
+    animation: scale 1s linear infinite .4s;
+  }
+  
+  .shadow-two:after {
+    left: 285px;
+    animation: scale 1s linear infinite .5s;
+  }
+  .bouncing-text {
+    position: relative;
+    display: flex;
+    text-align: center;
+    font-size: 20px; /* Adjust the font size as needed */
+    font-family: arial black;
+    margin-bottom: 10px; /* Add margin to adjust spacing */
+  }
+    .E, .d, .u, .G, .a, .i ,.n,.e,.r,.s{
+      color: green;
+      text-shadow: 0 3px yellowgreen, 0 5px yellow, 0 7px orange;
+    }}
+    .card-intro {
+      display: block;
+      margin-bottom: 20px;
+    }
+
+    .card-intro .col-6 {
+      flex: 100%;
+      max-width: 100%;
+    }
+    @keyframes bounce {
+      0%   { transform: scale(1,1) translateY(0); }
+      10%  { transform: scale(1.1,.9) translateY(0); }
+      30%  { transform: scale(.9,1.1)   translateY(-55px);}
+      50%  { transform: scale(1.05,.95) translateY(0); }
+      58%  { transform: scale(1,1) translateY(-7px); }
+      65%  { transform: scale(1,1) translateY(0);}
+      100% { transform: scale(1,1) translateY(0);}
+  }
+
+.E {
+animation: bounce 1s ease infinite;
+}
+
+.d {
+animation: bounce 1s ease infinite .1s;
+}
+.u {
+  animation: bounce 1s ease infinite .2s;
+}
+
+.G {
+  animation: bounce 1s ease infinite .3s;
+}
+
+.a{
+  animation: bounce 1s ease infinite .4s;
+}
+
+.i {
+  animation: bounce 1s ease infinite .5s;
+}
+
+.n {
+  animation: bounce 1s ease infinite .5s;
+}
+.e{
+  animation: bounce 1s ease infinite .5s;
+}
+.r {
+  animation: bounce 1s ease infinite .5s;
+}
+.s {
+  animation: bounce 1s ease infinite .5s;
+}
+
+
+.bouncing-text:before, .bouncing-text:after {
+  content:"";
+  position: absolute;
+  background-color: rgba(0,0,0,0.4);
+  width: 50px;
+  height:5px;
+  border-radius:50%;
+  top:82px;
+  z-index:-1;
+}
+
+.shadow, .shadow-two {
+  position: absolute;
+  top:82px;
+  z-index:-1;
+}
+
+.shadow:before, .shadow:after, .shadow-two:before, .shadow-two:after {
+  content:"";
+  position: absolute;
+  background-color: rgba(0,0,0,0.4);
+  width: 50px;
+  height:5px;
+  border-radius:50%;
+  top:0;  
+}
+
+.bouncing-text:before {
+  left:0;
+  animation: scale 1s linear infinite;
+}
+
+@keyframes scale {
+  0% {transform: scaleX(1);}
+  25% {transform: scaleX(0.4);}
+  50% {transform: scaleX(1);}
+  75% {transform: scaleX(0.9);}
+  100% {transform: scaleX(1);}
+}
+
+.bouncing-text:after {
+  left: 57px;
+  animation: scale 1s linear infinite .1s;
+}
+
+.shadow:before {
+  left: 116px;
+  animation: scale 1s linear infinite .2s;
+}
+
+.shadow:after {
+  left:175px;
+  animation: scale 1s linear infinite .3s;
+}
+
+.shadow-two:before {
+  left:232px;
+  animation: scale 1s linear infinite .4s;
+}
+
+.shadow-two:after {
+  left: 285px;
+  animation: scale 1s linear infinite .5s;
+}
+.bouncing-text {
+  position: relative;
+  display: flex;
+  text-align: center;
+  font-size: 58px; /* Adjust the font size as needed */
+  font-family: arial black;
+  margin-bottom: 10px; /* Add margin to adjust spacing */
+}
+  .E, .d, .u, .G, .a, .i ,.n,.e,.r,.s{
+    color: green;
+    text-shadow: 0 3px yellowgreen, 0 5px yellow, 0 7px orange;
+  }
+    @keyframes bounce {
+      0%   { transform: scale(1,1) translateY(0); }
+      10%  { transform: scale(1.1,.9) translateY(0); }
+      30%  { transform: scale(.9,1.1)   translateY(-55px);}
+      50%  { transform: scale(1.05,.95) translateY(0); }
+      58%  { transform: scale(1,1) translateY(-7px); }
+      65%  { transform: scale(1,1) translateY(0);}
+      100% { transform: scale(1,1) translateY(0);}
+  }
+
+.E {
+animation: bounce 1s ease infinite;
+}
+
+.d {
+animation: bounce 1s ease infinite .1s;
+}
+.u {
+  animation: bounce 1s ease infinite .2s;
+}
+
+.G {
+  animation: bounce 1s ease infinite .3s;
+}
+
+.a{
+  animation: bounce 1s ease infinite .4s;
+}
+
+.i {
+  animation: bounce 1s ease infinite .5s;
+}
+
+.n {
+  animation: bounce 1s ease infinite .5s;
+}
+.e{
+  animation: bounce 1s ease infinite .5s;
+}
+.r {
+  animation: bounce 1s ease infinite .5s;
+}
+.s {
+  animation: bounce 1s ease infinite .5s;
+}
+
+
+.bouncing-text:before, .bouncing-text:after {
+  content:"";
+  position: absolute;
+  background-color: rgba(0,0,0,0.4);
+  width: 50px;
+  height:5px;
+  border-radius:50%;
+  top:82px;
+  z-index:-1;
+}
+
+.shadow, .shadow-two {
+  position: absolute;
+  top:82px;
+  z-index:-1;
+}
+
+.shadow:before, .shadow:after, .shadow-two:before, .shadow-two:after {
+  content:"";
+  position: absolute;
+  background-color: rgba(0,0,0,0.4);
+  width: 50px;
+  height:5px;
+  border-radius:50%;
+  top:0;  
+}
+
+.bouncing-text:before {
+  left:0;
+  animation: scale 1s linear infinite;
+}
+
+@keyframes scale {
+  0% {transform: scaleX(1);}
+  25% {transform: scaleX(0.4);}
+  50% {transform: scaleX(1);}
+  75% {transform: scaleX(0.9);}
+  100% {transform: scaleX(1);}
+}
+
+.bouncing-text:after {
+  left: 57px;
+  animation: scale 1s linear infinite .1s;
+}
+
+.shadow:before {
+  left: 116px;
+  animation: scale 1s linear infinite .2s;
+}
+
+.shadow:after {
+  left:175px;
+  animation: scale 1s linear infinite .3s;
+}
+
+.shadow-two:before {
+  left:232px;
+  animation: scale 1s linear infinite .4s;
+}
+
+.shadow-two:after {
+  left: 285px;
+  animation: scale 1s linear infinite .5s;
+}
+    </style>
+
+
+
+  
+
+
+ 
+<div class="position-relative overflow-hidden p-3 p-md-5 m-md-3 text-center bg-body-tertiary background">
+  <div class="col-md-6 p-lg-5 mx-auto my-5">
+    <div class="bouncing-text">
+      <div class="E">E</div>
+      <div class="d">d</div>
+      <div class="u">u</div>
+      <div class="G">G</div>
+      <div class="a">a</div>
+      <div class="i">i</div>
+      <div class="n">n</div>
+      <div class="e">e</div>
+      <div class="r">r</div>
+      <div class="s">'s</div>
+      <div class="shadow"></div>
+      <div class="shadow-two"></div>
+    </div>
+    <h1 class="display-3 fw-bold">Welcome to EduGainer's</h1>
+    <h3 class="fw-normal text-muted mb-3">Our aim is to proide quality education to Entire world.
+      <p class="mt-3">We ensure that those who want to learn can learn without hinderance of money</p>
+    </h3>
+    <iframe
+    width="450"
+    height="250"
+    frameborder="0" style="border:0"
+    referrerpolicy="no-referrer-when-downgrade"
+    src="https://www.google.com/maps/embed/v1/place?key=AIzaSyDD6yqFxBiCRXZvm1ScFvoZ_4nrmgh3p9Q&q=Edugainer's Library and Classes,Uttarkashi,Uttarakhand+India"
+    allowfullscreen>
+  </iframe>
+
+  
+  <div class="product-device shadow-sm d-none d-md-block"></div>
+  <div class="product-device product-device-2 shadow-sm d-none d-md-block"></div>
+</div>
+
+
+<div class=" px-4 py-5" id="custom-cards ">
+
+
+  <div class=" row  card-intro ">
+    <div class="col-lg-6 mb-5 col-sm-12 ">
+      <a href="/classes"> <div class="card card-cover h-100 overflow-hidden text-bg-dark rounded-4 shadow-lg" style="background-image: url('css/educlasses.jpg');">
+        <div class="d-flex flex-column h-100 p-5 pb-3 text-white text-shadow-1 classes">
+          <h3 class=" mt-5 mb-4 display-6 lh-1 fw-bold">Edugainer's Classes</h3>
+         
+        </div></a>
+      </div>
+    </div>
+
+    <div class="col-lg-6 mb-5 col-sm-12">
+      <a href="/library"> <div class="card card-cover h-100 overflow-hidden text-bg-dark rounded-4 shadow-lg" class="library" style="background-image: url('css/test.jpg'); ">
+        <div class="d-flex flex-column h-100 p-5 pb-3 text-white text-shadow-1">
+          <h3 class=" mt-5 mb-4 display-6 lh-1 fw-bold">Edugainer's library</h3>
+          <ul class="d-flex list-unstyled mt-auto">
+            <li class="me-auto">
+         
+           </li></ul></div></div></div></div></div></a></div>
+
+
+    
+    <!-- <a class="btn btn-light btn-lg" href="/logout" role="button">Log Out</a>
+    <a class="btn btn-dark btn-lg" href="/submit" role="button">Submit a Secret</a> -->
+  </div>
+</div>
+
+<%- include('partials/footer') %>

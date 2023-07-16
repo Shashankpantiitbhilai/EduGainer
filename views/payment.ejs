@@ -1,0 +1,181 @@
+
+
+<%- include('partials/gradient') %>
+
+
+
+ <style>
+
+    h2 {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    form {
+      max-width: 500px;
+      margin: 0 auto;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 10px;
+    }
+
+    input[type="text"],
+    input[type="number"],
+    select {
+      width: 100%;
+      padding: 8px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      box-sizing: border-box;
+      margin-bottom: 10px;
+    }
+
+    input[type="file"] {
+      margin-top: 5px;
+    }
+
+    input[type="submit"] {
+      background-color: #4CAF50;
+      color: white;
+      padding: 10px 15px;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+
+    input[type="submit"]:hover {
+      background-color: #45a049;
+    }
+
+    .form-group {
+      margin-bottom: 20px;
+    }
+  </style>
+
+
+  <main class="form-signin h-50 w-70 m-auto">
+    <div class="card">
+      <div class="card-body ">
+  <form action="/new-regis" method="POST" enctype="multipart/form-data">
+    <div class="form-group">
+      <label for="name">Name:</label>
+      <input type="text" id="name" name="name" required>
+    </div>
+    <div class="form-group">
+      <label for="email">Email:</label>
+      <input type="email" id="email" name="email" required>
+    </div>
+    <div class="form-group">
+      <label for="month">Month:</label>
+      <select class="form-control" id="month" name="month" required>
+        <option value="Jan"><%= monthName %></option>
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label for="shift">Shift:</label>
+      <select id="shift" name="shift" required>
+        <option value="i" selected disabled hidden>Choose your shift</option>
+        <option value="7 AM to 2 PM">7 AM to 2 PM</option>
+        <option value="2 PM to 9 PM">2 PM to 9 PM</option>
+        <option value="7 PM to 11 PM">7 PM to 11 PM</option>
+        <option value="9 PM to 6 AM">9 PM to 6 AM</option>
+        <option value="2 PM to 11 PM">2 PM to 11 PM</option>
+        <option value="7 AM to 7 PM">7 AM to 7 PM</option>
+        <option value="24*7">24*7</option>
+        
+      </select>
+    </div>
+    <div class="form-group">
+      <label for="amount">Amount:</label>
+      <input type="number"id="amount" name="amount" min="400" max="1100" required >
+        
+      </select>
+    </div>
+
+  
+
+    <div class="form-group">
+      <label for="paymentMethod">Payment Method:</label>
+      <select id="paymentMethod" name="paymentMethod" required>
+        <option value="UPI">UPI</option>
+        <option value="Card">Card</option>
+       
+      </select>
+    </div>
+    <div class="form-group ">
+    
+      <img src="css/qrcode.jpg" height="250px" align="center">
+     
+       
+      
+    </div>
+
+    <div class="form-group">
+      <label for="uploadPaymentScreenshot">Upload Payment Screenshot:</label>
+      <input type="file" id="uploadPaymentScreenshot" class="selector"name="uploadPaymentScreenshot" accept="image/*" required>
+    </div>
+
+    <button type="submit" value="Submit"class="btn btn-success">Submit</button>
+  </form>
+
+</div></div></main>
+<script>
+  document.getElementById('shift').addEventListener('change', function () {
+    var selectedShift = this.value;
+    var amountField = document.getElementById('amount');
+    if (selectedShift === "7 AM to 2 PM") {
+      amountField.value = '500';
+      amountField.readOnly = true;
+    } 
+  
+   else if (selectedShift === '2 PM to 9 PM') {
+      amountField.value = '500';
+      amountField.readOnly = true;
+    }
+    else if (selectedShift === '7 PM to 11 PM') {
+      amountField.value = '300';
+      amountField.readOnly = true;
+    }
+    else if (selectedShift === '9 PM to 6 AM') {
+      amountField.value = '500';
+      amountField.readOnly = true;
+    }
+    else if (selectedShift === '2 PM to 11 PM') {
+      amountField.value = '700';
+      amountField.readOnly = true;
+    }
+    else  if (selectedShift === '7 AM to 7 PM') {
+      amountField.value = '800';
+      amountField.readOnly = true;
+    }
+    else  if (selectedShift === '24*7') {
+      amountField.value = '1000';
+      amountField.readOnly = true;
+    }
+    }
+  );
+  document.getElementById('aadharNo').addEventListener('input', function () {
+    var aadharNo = this.value.trim();
+    if (aadharNo.length === 12) {
+      var isValid = validateAadharNumber(aadharNo);
+      if (!isValid) {
+        this.setCustomValidity('Invalid Aadhar number');
+      } else {
+        this.setCustomValidity('');
+      }
+    } else {
+      this.setCustomValidity('Aadhar number must be 12 digits');
+    }
+  });
+
+  function validateAadharNumber(aadharNo) {
+    // Implement your server-side validation or Aadhar number validation algorithm here
+    // Example implementation using regex pattern: /^(\d{4}\s?){2}\d{4}$/
+    // Return true if the Aadhar number is valid; otherwise, return false
+    return /^(\d{4}\s?){2}\d{4}$/.test(aadharNo);
+  }
+</script>
+<%- include('partials/footer') %>

@@ -58,7 +58,7 @@
   <main class="form-signin h-50 w-70 m-auto">
     <div class="card">
       <div class="card-body ">
-  <form action="/new-regis" method="POST" enctype="multipart/form-data">
+  <form action="/class-reg" method="POST" enctype="multipart/form-data">
     <div class="form-group">
       <label for="name">Name:</label>
       <input type="text" id="name" name="name" required>
@@ -76,7 +76,39 @@
         <option value="Other">Other</option>
       </select>
     </div>
+    <div class="form-group">
+        <label for="class">Class:</label>
+        <input type="text" id="class" name="class" required readonly>
+         
+     
+      </div>
+      <div class="form-group">
+        <label for="board">Board:</label>
+        <input type="text" id="board" name="board" required readonly>
+      </div>
 
+      <div class="form-group">
+        <label for="subject">Subject:</label>
+        <select id="subject" name="subject" required>
+          <option value="Physics">Physics</option>
+          <option value="Chemistry">Chemistry</option>
+          <option value="Maths">Maths</option>
+          <option value="Economics">Economics</option>
+          <option value="Science">Science</option>
+          <option value="Biology">Biology</option>
+          <option value="Other">Other</option>
+        </select>
+      </div>
+  <div class="form-group">
+        <label for="faculty">Faculty:</label>
+        <input type="text" id="faculty" name="faculty" required readonly>
+      </div>
+      <div class="form-group">
+        <label for="school">School:</label>
+        <input type="text" id="school" name="school" required>
+        
+     
+      </div>
     <div class="form-group">
       <label for="dob">Date of Birth:</label>
       <input type="date" id="dob" name="dob" max="2007-12-31" required>
@@ -124,103 +156,49 @@
       <input type="text"  id="prepareForExam" name="prepareForExam" required>
     </div>
 
-    <div class="form-group">
-      <label for="shift">Shift:</label>
-     <input type="text" class="form-control" id="shift" name="shift" readonly>
+   
         
      
     </div>
-    <div class="form-group">
-      <label for="amount">Amount:</label>
-      <input type="text"id="amount" name="amount" class="form-control" required readonly >
-        
-      </select>
-    </div>
+
 
     <div class="form-group">
       <label for="photo">Profile Photo:</label>
       <input type="file" id="photo" name="photo"class="selector" accept="image/*" required>
     </div>
 
-    <div class="form-group">
-      <label for="paymentMethod">Payment Method:</label>
-      <select id="paymentMethod" name="paymentMethod" required>
-        <option value="UPI">UPI</option>
-        <option value="Card">Card</option>
-       
-      </select>
-    </div>
-    <div class="form-group ">
     
-      <img src="css/qrcode.jpg" height="250px" align="center">
-     
        
       
     </div>
 
-    <div class="form-group">
-      <label for="uploadPaymentScreenshot">Upload Payment Screenshot:</label>
-      <input type="file" id="uploadPaymentScreenshot" class="selector"name="uploadPaymentScreenshot" accept="image/*" required>
-    </div>
 
+  
     <button type="submit" value="Submit"class="btn btn-success">Submit</button>
   </form>
 
 </div></div></main>
 <script>
-
-  window.onload = function() {
-    // Get the value from localStorage
-    var shiftValue = localStorage.getItem('batchName');
-    
-    // Display the value 
-    var shiftField = document.getElementById('shift');
-    if (shiftField) {
-      shiftField.value = shiftValue;
-    }
   
-    var amountVal= localStorage.getItem('amountValue');
-    
-    // Display the value 
-    var amount = document.getElementById('amount');
-    if (amount) {
-      amount.value =amountVal;
-    }}
-
-  document.getElementById('shift').addEventListener('change', function () {
-    var selectedShift = this.value;
-    var amountField = document.getElementById('amount');
-    if (selectedShift === "7 AM to 2 PM") {
-      amountField.value = '500';
-      amountField.readOnly = true;
-    } 
+    document.addEventListener('DOMContentLoaded', function() {
+      // Retrieve class and board information from LocalStorage
+      var className = localStorage.getItem('class');
+      var boardName = localStorage.getItem('board');
+      var facultyName = localStorage.getItem('faculty');
   
-   else if (selectedShift === '2 PM to 9 PM') {
-      amountField.value = '500';
-      amountField.readOnly = true;
-    }
-    else if (selectedShift === '7 PM to 11 PM') {
-      amountField.value = '300';
-      amountField.readOnly = true;
-    }
-    else if (selectedShift === '9 PM to 6 AM') {
-      amountField.value = '500';
-      amountField.readOnly = true;
-    }
-    else if (selectedShift === '2 PM to 11 PM') {
-      amountField.value = '700';
-      amountField.readOnly = true;
-    }
-    else  if (selectedShift === '7 AM to 7 PM') {
-      amountField.value = '800';
-      amountField.readOnly = true;
-    }
-    else  if (selectedShift === '24*7') {
-      amountField.value = '1000';
-      amountField.readOnly = true;
-    }
-    }
-  );
+      // Populate the class and board fields with the retrieved information
+      var classField = document.getElementById('class');
+      var boardField = document.getElementById('board');
+      var facultyField = document.getElementById('faculty');
+      if (classField && boardField && facultyField) {
+        classField.value = className;
+        boardField.value = boardName;
+        facultyField.value=facultyName;
+      }
+    });
+ 
+  
+ 
   document.getElementById('aadharNo').addEventListener('input', function () {
     var aadharNo = this.value.trim();
     if (aadharNo.length === 12) {

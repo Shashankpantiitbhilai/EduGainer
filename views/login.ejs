@@ -8,7 +8,8 @@
         <div class="card-body">
 
           <!-- Makes POST request to /register route -->
-       
+       <% if(errorMessage){ %>
+<p class="text-danger"><%= errorMessage %></p>   <%}%>
           
           <!-- Rest of the login form -->
         

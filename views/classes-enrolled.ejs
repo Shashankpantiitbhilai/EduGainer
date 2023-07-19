@@ -1,0 +1,32 @@
+<%- include('partials/gradient') %>
+<style>
+    .warning {
+        color: yellow;
+        font-size: 20px;
+    }
+</style>
+<main class="form-signin w-100 mt-5 mx-auto  .gradient-custom">
+    <% if (errorMessage) { %>
+        <div class="alert alert-danger" role="alert">
+       <%= errorMessage %>
+        </div>
+    <% } %>
+    
+    <div class="mt-auto mx-auto container">
+        <form method="POST" action="/classes-enrolled">
+            Reg.No <input type="text" class="form-control top"  placeholder="Registration No." name="reg" required autofocus>
+           <button class="btn btn-success w-100 py-2" type="submit">Verify</button>
+        </form>
+    </div>
+</main>
+
+<%- include('partials/footer') %>
+
+<script>
+    // The form submission is handled by the server-side code, no need for a client-side function for form submission
+
+    // You can keep this code block to clear the localStorage when the user returns to this page
+    window.onload = function () {
+        localStorage.removeItem('reg');
+    };
+</script>

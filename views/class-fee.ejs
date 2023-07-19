@@ -128,20 +128,46 @@
     <h2>Fee Payment Form</h2>
     <form action="/class-fee" method="POST" enctype="multipart/form-data">
  
+      <div class="form-group">
+        <label for="reg">RegNo:</label>
+        <input type="text" id="reg" name="reg" value="<%= regis %>" readonly>
+
+      </div>
   
       <div class="form-group">
         <label for="name">Name:</label>
         <input type="text" class="form-control" id="name" name="name" required>
       </div>
+      <div class="form-group">
+        <label for="contact">Contact No:</label>
+       <input type="tel" name="contact" id="contact" maxlength="10" pattern="\d{10}"placeholder="Enter Mobile No"> 
+      </div>
   
       <div class="form-group">
         <label for="month">Month:</label>
         <select class="form-control" id="month" name="month" required>
-          <option value="Jan"><%= monthName %></option>
+          <option value="<%= monthName %>"><%= monthName %></option>
         </select>
       </div>
   
-  
+      <div class="form-group">
+        <label for="batch">Batch:</label>
+        <input type="text" class="form-control" id="batch" name="batch" value= "<%= ClassVal %>"required readonly>
+          
+      </div>
+      <div class="form-group">
+        <label for="subject">Subject:</label>
+        <input type="text" class="form-control" id="subject" name="subject" value=" <%= subject %>" required readonly>
+        
+      </div>
+      <div class="form-group">
+        <label for="facultyName">Faculty:</label>
+      
+        <input type="text" class="form-control" id="facultyName" name="faculty" value="<%= facultyName %>" readonly readonly>
+          
+       
+        </select>
+      </div>
 
   
       <div class="form-group">
@@ -152,6 +178,13 @@
        
         </select>
       </div>
+      <div class="form-group">
+        <label for="amount">Amount:</label>
+        <input type="number"id="amount"  required readonly>
+          
+        </select>
+      </div>
+  
       <div class="form-group ">
     
         <img src="css/qrcode.jpg" height="250px" align="center">
@@ -164,9 +197,40 @@
         <input type="file" class="form-control-file selector"id="paymentPhoto" name="paymentPhoto" accept="image/*" required>
       </div>
   
-      <a href="/appreciate"><button type="submit" class="btn btn-success">Submit</button></a>
+      <a href="/appreciate"><button type="submit" class="btn btn-success" >Submit</button></a>
     </form>
   </div></div>
 </main>
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    // Fetch the batch value from the server-side (replace 'YOUR_BATCH_VALUE' with the actual batch value)
+    var batch = "<%= ClassVal %>"; // Replace 'YOUR_BATCH_VALUE' with the actual batch value coming from the server-side
+
+    // Get the amount input field
+    var amountField = document.getElementById('amount');
+
+    // Function to calculate the amount based on the batch value
+    function calculateAmount(batch) {
+      switch (batch) {
+        case '8th':
+          return '500';
+        case '9th':
+        case '10th':
+          return '600';
+        case '11th':
+        case '12th':
+          return '700';
+        default:
+          return ''; // Handle the case when batch value is unknown or not specified
+      }
+    }
+
+    // Calculate and set the amount based on the batch value
+    var calculatedAmount = calculateAmount(batch);
+    amountField.value = calculatedAmount;
+    amountField.readOnly = true; // Make the amount field readonly
+  });
+</script>
+
   
   <%- include('partials/footer') %>

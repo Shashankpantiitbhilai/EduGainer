@@ -70,7 +70,12 @@ body {
   color:blanchedalmond;
   font-family: Libre-Baskerville;
 }
-
+.heading-register{
+  color:darkorange
+}
+.heading-home{
+  color:yellow;
+}
 .gradient-background {
   background: linear-gradient(to right,blue,purple,darkorange);
   background-size: 180% 180%;
@@ -138,7 +143,7 @@ body {
    
   
     /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-    background: linear-gradient(to right, rgba(67,233,123,0.5), rgba(56,249,215,0.5))
+    background: linear-gradient(to left, rgba(103, 233, 67, 0.5), rgba(124, 56, 249, 0.5),rgba(249, 56, 56, 0.5))
   }
 .heading{
   color:darkorange
@@ -268,3 +273,13 @@ background-color: purple;
 /* .register{
   background: linear-gradient(to center, rgba(67, 71, 155, 0.248), rgba(255, 56, 56, 0.5))
 } */
+.teacher{
+  width:130px;
+  height:150px;
+  border-radius: 50%;
+
+}
+.educlasses{
+  width:150px;
+  height:150px;
+}

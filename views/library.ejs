@@ -101,6 +101,69 @@
       }
     }
    
+
+  .neon {
+      position: relative;
+      overflow: hidden;
+      filter: brightness(100%);
+  }
+  
+  .text {
+      background-color: black;
+      color: white;
+      font-size: 15px;
+   font-weight: 500;
+      font-family: sans-serif;
+      text-transform: uppercase;
+      position: relative;
+      user-select: none;
+  }
+  
+  .text::before {
+      content: attr(data-text);
+      position: absolute;
+      color: white;
+      filter: blur(0.02em);
+      mix-blend-mode: difference;
+  }
+  
+  .gradient {
+      position: absolute;
+      background: linear-gradient(45deg, red, gold, lightgreen, gold, red);
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      mix-blend-mode: multiply;
+  }
+  
+  .spotlight {
+      position: absolute;
+      top: -100%;
+      left: -100%;
+      right: 0;
+      bottom: 0;
+      background: 
+          radial-gradient(
+              circle,
+              white,
+              transparent 25%
+          ) center / 25% 25%,
+          radial-gradient(
+              circle,
+              white,
+              black 25%
+          ) center / 12.5% 12.5%;
+      animation: light 5s linear infinite;
+      mix-blend-mode: color-dodge;
+  }
+  
+  @keyframes light {
+      to {
+          transform: translate(50%, 50%);
+      }
+  }
+  
   </style>
  
 <div class="px-4 pt-5 my-5 text-center border-bottom bg-dark special mt-0">
@@ -260,13 +323,39 @@
 
 
         <div class="container">
-       <a href="/already-regis"> <button type="button" class="btn btn-light mx-4">Fee Pay</button></a>
-       <a href="/new-regis"> <button type="button" class="btn btn-light">New Reg</button></a>
+     <a href="/already-regis"> <button type="button" class="btn btn-light mx-4">Fee Pay</button></a>
+       <button type="button" class="btn btn-light"onclick="submitForm('7 AM to 2 PM', '500+100(reg)=Rs.600')">New Reg</button>
    </div>
       </div>
+
       
-      <div class="card-footer">
-        <small class="text-body-secondary">Last updated 3 mins ago</small>
+      <div class="card-footer text-center h1-seats neon text-center">
+        <span class="text">
+          <%const seatA= 92-seats["7 AM to 2 PM"] -seats["7 AM to 7 PM"] -seats["24*7"];
+          if(seatA<=0)
+          { %>
+            <small > Waiting List : <%= (1-seatA)*-1  %></small></span>
+            
+            
+          
+        <%  }
+          else
+          { %>
+            <small > Available Seats : <%= seatA %></small></span>
+        <%  } %>          
+         
+          
+          
+          
+          
+          
+          
+          
+          
+          
+        
+  <span class="gradient"></span>
+  <span class="spotlight"></span>
       </div>
     </div>
   </div>
@@ -294,13 +383,29 @@
           </div>
         
         </div>
-        <a href="https://forms.gle/D2rQ3BLeWRWqnaJN8"> <button type="button" class="btn btn-light  mx-4"> Fee pay</button></a>
-        <a href="https://forms.gle/D2rQ3BLeWRWqnaJN8"> <button type="button" class="btn btn-light ">New Reg.</button></a>
+        <a href="/already-regis"> <button type="button" class="btn btn-light  mx-4"> Fee pay</button></a>
+        <button type="button" class="btn btn-light " onclick="submitForm('2 PM to 9 PM', '500+100(reg)=Rs.600')">New Reg.</button></a>
    
       </div>
       
-      <div class="card-footer">
-        <small class="text-body-secondary">Last updated 3 mins ago</small>
+      <div class="card-footer h1-seats neon text-center">
+        <span class="text">
+          <% const seatB=92-seats["2 PM to 9 PM"] -seats["7 AM to 7 PM"] -seats["2 PM to 11 PM"]-seats["24*7"] ;
+          if(seatB<=0)
+          { %>
+          
+          
+          
+          
+            <small >    Waiting List : <%= seatB*-1 %></small></span>
+
+            <%  }
+            else
+            { %>
+              <small > Available Seats : <%= seatB %></small></span>
+          <%  } %>  
+        <span class="gradient"></span>
+        <span class="spotlight"></span>
       </div>
     </div>
   </div>
@@ -329,12 +434,28 @@
         
         </div>
         <div class="container">
-        <a href="https://forms.gle/D2rQ3BLeWRWqnaJN8"> <button type="button" class="btn btn-light mx-4">Fee Pay</button></a>
-        <a href="/already-regis"> <button type="button" class="btn btn-light">New Reg.</button></a>
+        <a href="/already-regis"> <button type="button" class="btn btn-light mx-4">Fee Pay</button></a>
+       <button type="button" class="btn btn-light"onclick="submitForm('7 PM to 11 PM', '300+100(reg)=Rs.400')">New Reg.</button></a>
       </div>
       </div> 
-      <div class="card-footer">
-        <small class="text-body-secondary">Last updated 3 mins ago</small>
+      <div class="card-footer h1-seats neon text-center">
+        <span class="text">
+          <% const seatC= 92-seats["7 PM to 11 PM"] -seats["2 PM to 11 PM"] -seats["24*7"] ;
+          if(seatC<=0)
+          { %>
+            <small > Waiting List : <%= (seatC)*-1  %></small></span>
+            
+            
+          
+        <%  }
+          else
+          { %>
+            <small > Available Seats : <%= seatC %></small></span>
+        <%  } %>          
+         
+          
+        <span class="gradient"></span>
+        <span class="spotlight"></span>
       </div>
     </div>
   </div>
@@ -364,13 +485,29 @@
       
       </div>
     <div class="container">
-      <a href="https://forms.gle/D2rQ3BLeWRWqnaJN8"> <button type="button" class="btn btn-light mx-4">Fee Pay</button></a>
-      <a href="https://forms.gle/D2rQ3BLeWRWqnaJN8"> <button type="button" class="btn btn-light">New Reg.</button></a>
+      <a href="/already-regis"> <button type="button" class="btn btn-light mx-4">Fee Pay</button></a>
+      <button type="button" class="btn btn-light"onclick="submitForm('9 PM to 6 AM', '500+100(reg)=Rs.600')">New Reg.</button></a>
     </div>
     </div>
     
-    <div class="card-footer">
-      <small class="text-body-secondary">Last updated 3 mins ago</small>
+    <div class="card-footer h1-seats neon text-center">
+      <span class="text">
+        
+        <%const seatD= 92-seats["9 PM to 6 AM"] -seats["24*7"]  ;
+        if(seatD<=0)
+        { %>
+          <small > Waiting List : <%= (seatD)*-1  %></small></span>
+          
+          
+        
+      <%  }
+        else
+        { %>
+          <small > Available Seats : <%= seatD %></small></span>
+      <%  } %>    
+        
+      <span class="gradient"></span>
+      <span class="spotlight"></span>
     </div>
   </div>
 </div>
@@ -400,12 +537,26 @@
       
       </div>
       <div class="container">
-      <a href="https://forms.gle/D2rQ3BLeWRWqnaJN8"> <button type="button" class="btn btn-light mx-4">Fee Pay</button></a>
-      <a href="https://forms.gle/D2rQ3BLeWRWqnaJN8"> <button type="button" class="btn btn-light">New Reg.</button></a>
+      <a href="/already-regis"> <button type="button" class="btn btn-light mx-4">Fee Pay</button></a>
+      <button type="button" class="btn btn-light" onclick="submitForm('2 PM to 11 PM', '700+100(reg)=Rs.800')">New Reg.</button></a>
    </div>
     </div>
-    <div class="card-footer">
-      <small class="text-body-secondary">Last updated 3 mins ago</small>
+    <div class="card-footer h1-seats neon text-center">
+      <span class="text">
+        <%const seatE= 92-seats["2 PM to 11 PM"] -seats["2 PM to 9 PM"]-seats["7 PM to 11 PM"]-seats["9 PM to 6 AM"] -seats["24*7"]  ;
+        if(seatE<=0)
+        { %>
+          <small > Waiting List : <%= (seatE)*-1  %></small></span>
+          
+          
+        
+      <%  }
+        else
+        { %>
+          <small > Available Seats : <%= seatE %></small></span>
+      <%  } %>  
+      <span class="gradient"></span>
+      <span class="spotlight"></span>
     </div>
   </div>
 </div>
@@ -434,55 +585,101 @@
       
       </div>
       <div class="container">
-      <a href="https://forms.gle/D2rQ3BLeWRWqnaJN8"> <button type="button" class="btn btn-light mx-4">Fee Pay</button></a>
-      <a href="https://forms.gle/D2rQ3BLeWRWqnaJN8"> <button type="button" class="btn btn-light">New Reg.</button></a>
+      <a href="/already-regis"> <button type="button" class="btn btn-light mx-4">Fee Pay</button></a>
+      <button type="button" class="btn btn-light" onclick="submitForm('7 AM to 7 PM', '800+100(reg)=Rs.900')">New Reg.</button></a>
    </div>
     </div>
     
-    <div class="card-footer pink">
-      <small class="text-body-secondary">Last updated 3 mins ago</small>
-    </div>
-  </div>
-</div>
-<div class="col-4 last">
-  <div class="card h-100 text-bg-dark mb-3">
-    
-    <div class="card-body green">
-      <h5 class="card-title d-flex justify-content-center">24*7</h5><hr>
-      
-      <div class="d-flex flex-column flex-md-row p-4 gap-4 py-md-5 align-items-center justify-content-center">
-        <div class="dropdown-menu d-block position-static pt-0 mx-0 rounded-3 shadow overflow-hidden w-280px" data-bs-theme="light">
-          <form class="p-2 mb-2 bg-body-tertiary border-bottom">
-            <input type="search" class="form-control" autocomplete="false" value="Fee Structure" readonly>
-          </form>
-          <ul class="list-unstyled mb-0">
-            <li><a class="dropdown-item d-flex align-items-center gap-2 py-2" >
-              <span class="d-inline-block bg-success rounded-circle p-1"></span>
-              Regis Fees Rs. 100
-            </a></li>
-            <li><a class="dropdown-item d-flex align-items-center gap-2 py-2" >
-              <span class="d-inline-block bg-primary rounded-circle p-1"></span>
-           Library Fees Rs. 1000
-            </a></li>
+    <div class="card-footer pink h1-seats neon text-center">
+      <span class="text">
+        <%const seatF=92 -seats["2 PM to 9 PM"]-seats["7 AM to 7 PM"]-seats["7 AM to 2 PM"] -seats["24*7"]   ;
+        if(seatF<=0)
+        { %>
+          <small > Waiting List : <%= (seatF)*-1  %></small></span>
           
-          </ul>
-        </div>
-      
-      </div>
-      <div class="container d-flex justify-content-center ">
-      <a href="https://forms.gle/D2rQ3BLeWRWqnaJN8"> <button type="button" class="btn btn-light mx-2">Fee Pay</button></a>
-      <a href="https://forms.gle/D2rQ3BLeWRWqnaJN8"> <button type="button" class="btn btn-light">New Reg.</button></a>
-   </div>
-    </div>
+          
+        
+      <%  }
+        else
+        { %>
+          <small > Available Seats : <%= seatF %></small></span>
+      <%  } %>  
+        
+        
+        
+        
+        
+        
+        
+        
+        
     
-    <div class="card-footer green">
-      <small class="text-body-secondary">Last updated 3 mins ago</small>
+  <span class="gradient"></span>
+  <span class="spotlight"></span>
     </div>
   </div>
 </div>
 
+  <div class="col-sm-12 col-lg-12 text-center last">
+    <div class="card h-100 text-bg-dark mb-3">
+      <div class="card-body green">
+        <h5 class="card-title d-flex justify-content-center">24*7</h5>
+        <hr>
+        <div class="d-flex flex-column flex-md-row p-4 gap-4 py-md-5 align-items-center justify-content-center">
+          <div class="dropdown-menu d-block position-static pt-0 mx-0 rounded-3 shadow overflow-hidden w-280px" data-bs-theme="light">
+            <form class="p-2 mb-2 bg-body-tertiary border-bottom">
+              <input type="search" class="form-control" autocomplete="false" value="Fee Structure" readonly>
+            </form>
+            <ul class="list-unstyled mb-0">
+              <li>
+                <a class="dropdown-item d-flex align-items-center gap-2 py-2">
+                  <span class="d-inline-block bg-success rounded-circle p-1"></span>
+                  Regis Fees Rs. 100
+                </a>
+              </li>
+              <li>
+                <a class="dropdown-item d-flex align-items-center gap-2 py-2">
+                  <span class="d-inline-block bg-primary rounded-circle p-1"></span>
+                  Library Fees Rs. 1000
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div class="container-fluid d-flex justify-content-center">
+          <a href="/already-regis"><button type="button" class="btn btn-light mx-2">Fee Pay</button></a>
+          <button type="button" class="btn btn-light"  onclick="submitForm('24*7', '1000+100(reg)=1100')">New Reg.</button></a>
+        </div>
+      </div>
+      <div class="card-footer h1-seats neon text-center">
+        <span class="text">
+          
+          
+          <%const seatG=92-seats["2 PM to 11 PM"] -seats["2 PM to 9 PM"]-seats["7 PM to 11 PM"]-seats["9 PM to 6 AM"] -seats["24*7"] -seats["7 AM to 7 PM"] -seats["7 AM to 2 PM"]  ;
+          if(seatG<=0)
+          { %>
+            <small > Waiting List : <%= (seatG)*-1  %></small></span>
+            
+            
+          
+        <%  }
+          else
+          { %>
+            <small > Available Seats : <%= seatG %></small></span>
+        <%  } %>  
+          
+          
+          
+          
+          
+        <span class="gradient"></span>
+        <span class="spotlight"></span>
+      </div>
+    </div>
   </div>
+</div>
 
+</div>
 
  
 
@@ -494,6 +691,17 @@
 </div>
 
   <script>
+
+
+    
+    function submitForm(shift, amount) {
+      // Store the SHIFT and AMOUNT values in LocalStorage
+      localStorage.setItem('batchName', shift);
+      localStorage.setItem('amountValue', amount);
+  
+      // Redirect to the new regis form
+      window.location.href = '/new-regis'; // Change this to the correct URL of the regis form
+    }
     var TxtType = function(el, toRotate, period) {
     this.toRotate = toRotate;
     this.el = el;

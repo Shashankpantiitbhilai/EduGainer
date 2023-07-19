@@ -7,7 +7,11 @@
     <form method="POST" action="/already-regis">
       
      
-    
+      <% if (errorMessage) { %>
+        <div class="alert alert-danger" role="alert">
+       <%= errorMessage %>
+        </div>
+    <% } %>
      
        Reg.No <input type="number" class="form-control top" id="floatingInput" placeholder="Registration No." name="reg" required autofocus>
       

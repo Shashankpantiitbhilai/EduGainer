@@ -3,132 +3,389 @@
 <%- include('partials/classes-gradient') %>
 
 <main> 
-    <div class="row row-cols-1 row-cols-md-3 mb-3 text-center mt-4">
-    <div class="col">
-        <div class="card mb-4 rounded-3 shadow-sm bg-info">
-          <div class="card-header py-3">
-            <h4 class="my-0 fw-normal">Key Features</h4>
-          </div>
-          <div class="card-body">
-            <h1 class="card-title pricing-card-title">All Batches<small class="text-body-secondary fw-light">/mo</small></h1>
-            <ul class="list-unstyled mt-3 mb-4">
-              <li>Free <b><mark>4 hours Library Access</mark></b> to enrolled students on public holidays=>
-                <ul type="circle"><li>
-                  <u> <mark>4 PM to 8 PM</mark></u> 
-                </li>
-            <li>
-               <mark> <u>12 PM to 4 PM</u></mark>
-            </li></ul>
-             
-          
-              
-            </ul>
-          </div>
+  <div class="row row-cols-1 row-cols-md-3 mb-3 text-center mt-4">
+    <div class="col-sm-12 col-lg-12">
+      <div class="card mb-4 rounded-3 shadow-sm bg-info">
+        <div class="card-header py-3">
+          <h4 class="my-0 fw-normal">Extra Benefits</h4>
+        </div>
+        <div class="card-body">
+          <h1 class="card-title pricing-card-title">All Batches</h1>
+          <ul class="list-unstyled mt-3 mb-4">
+            <li>Free <b><mark>4 hours Library Access</mark></b> to enrolled students 
+              <ul type="circle"><br>
+                <li><u><mark>4 PM to 8 PM</mark></u></li>
+                <li><mark><u>12 PM to 4 PM (on Public Holidays)</u></mark></li>
+              </ul>
+            </li>
+          </ul>
         </div>
       </div>
-
-    
-      <div class="col">
+    </div>
+  </div>
+  <div class="alert alert-warning" role="alert">
+   <marquee><font color="red">Disclaimer:</font> Limited Seats Available &#128562;!! Enroll Now </marquee>
+  </div>
+  <div class="container">
+    <div class="row">
+      <div class="col-6 text-center">
         <div class="card mb-4 rounded-3 shadow-sm bg-warning">
-          <div class="card-header py-3">
-            <h4 class="my-0 fw-normal">Class-10th </h4>
+          <div class="card-header">
+            <div class="container">
+              <h4 class="my-0 fw-normal">Class-10th</h4>
+            </div>
           </div>
           <div class="card-body">
             <h1 class="card-title pricing-card-title">CBSE<small class="text-body-secondary fw-light"></small></h1>
             <ul class="list-unstyled mt-3 mb-4">
               <li>PCM</li>
-              <li>4:30 to 5:30 PM</li>
-              <li>Complete tutoring</li>
-              <li></li>
             </ul>
             <hr>
-           
-          <a href="/class-fee">  <button type="button" class="w-100 btn btn-lg btn-primary"> <li>Faculty: Amit Sir</li></button></a>
-          </div>
-        </div>
-      </div>
-      <div class="col">
-        <div class="card mb-4 rounded-3 shadow-sm bg-light">
-          <div class="card-header py-3">
-            <h4 class="my-0 fw-normal">Class-10th</h4>
-          </div>
-          <div class="card-body">
-            <h1 class="card-title pricing-card-title">ICSE<small class="text-body-secondary fw-light">/mo</small></h1>
-            <ul class="list-unstyled mt-3 mb-4">
-              <li>PCM</li>
-              
-              <li>5:30 to 6:30 pm</li>
-              <li>Full support</li>
-              
-            </ul><hr>
-            <a href="/class-fee"> <button type="button" class="w-100 btn btn-lg btn-primary"><li>Aman Dev Sir</li></button></a>
-          </div>
-        </div>
-      </div></div></main>
-     
-      <main> 
-        <div class="row row-cols-1 row-cols-md-3 mb-3 text-center mt-4">
-        <div class="col">
-      
-        <div class="card mb-4 rounded-3 shadow-sm bg-secondary">
-          <div class="card-header py-3">
-            <h4 class="my-0 fw-normal">Class-11th</h4>
-          </div>
-          <div class="card-body">
-            <h1 class="card-title pricing-card-title"><small class="text-body-secondary fw-light">/mo</small></h1>
-            <ul class="list-unstyled mt-3 mb-4">
-              <li>ECONOMICS</li>
-              
-              <li>5:30 to 6:30 pm</li>
-              <li>Full support</li>
-              
-            </ul><hr>
-            <a href="/class-fee"> <button type="button" class="w-100 btn btn-lg btn-primary"><li>Akansha Mam</li></button></a>
-          </div>
-        </div>
-      </div>
-      <div class="col">
-        <div class="card mb-4 rounded-3 shadow-sm bg-danger">
-          <div class="card-header py-3">
-            <h4 class="my-0 fw-normal">Class-11th</h4>
-          </div>
-          <div class="card-body">
-            <h1 class="card-title pricing-card-title">All Boards<small class="text-body-secondary fw-light">/mo</small></h1>
-            <ul class="list-unstyled mt-3 mb-4">
-              <li>Physics</li>
-              
-              <li>6 to 7 pm</li>
-              <li>Full support</li>
-              
-            </ul><hr>
-            <a href="/class-fee">  <button type="button" class="w-100 btn btn-lg btn-primary"><li>ATP Sir</li></button></a>
+            <a href="#" id="moreInfoLink1"><button class="btn btn-primary mb-2">Click to know more</button></a> <!-- Use unique id -->
+            <div id="moreInfoDropdown1" class="d-none"> <!-- Use unique id -->
+              <div class="container">
+                <div class="row">
+                  <div class="col-6">
+                    <ul class="dropdown-menu position-static d-grid gap-1 p-2 rounded-3 mx-0 border-0 shadow w-220px" data-bs-theme="dark">
+                      <li class="order-sm-2 text-center text-sm-start"><a class="dropdown-item rounded-2 active mx-auto px-0">4:30 to 5:30 PM</a></li>
+                      <li><a class="dropdown-item rounded-2">Dedicated Doubt Session</a></li>
+                    </ul>
+                  </div>
+                  <div class="col-lg-6 col-sm-12">
+                    <img src="css/amit.jpg" class="teacher">
+                    <li>Amit Sir</li>
+                    <li>6395736536</li>
+                  </div>
+                  <hr>
+                  <div class="container">
+                    <a href="/classes-enrolled"> <button type="button" class="btn btn-light mx-4 mb-2">Fee Pay (for registered students)</button></a>
+                    
+                 
+                 <button type="button" class="w-100 btn  btn-primary"value="Amit Sir" id="faculty"onclick="submitValue('Amit sir', '10th', 'CBSE')"><li> Enroll (for New Admission ) </li></button></a>
+                </div></div>
+              </div> 
+            </div>
           </div>
         </div>
       </div>
 
-      <div class="col">
-        <div class="card mb-4 rounded-3 shadow-sm bg-info">
-          <div class="card-header py-3">
-            <h4 class="my-0 fw-normal">Class-12th</h4>
+
+      <!-- Add another card with unique id for moreInfoLink and moreInfoDropdown -->
+      <div class="col-6  text-center">
+        <div class="card mb-4 rounded-3 shadow-sm bg-warning">
+          <div class="card-header">
+            <div class="container">
+              <h4 class="my-0 fw-normal">Class-10th</h4>
+            </div>
           </div>
           <div class="card-body">
-            <h1 class="card-title pricing-card-title">All Boards<small class="text-body-secondary fw-light">/mo</small></h1>
+            <h1 class="card-title pricing-card-title">ICSE<small class="text-body-secondary fw-light"></small></h1>
             <ul class="list-unstyled mt-3 mb-4">
-              <li>Physics</li>
-              
-              <li>5 to 6 pm</li>
-              <li>Full support</li>
-              
-            </ul><hr>
-            <a href="/class-fee">  <button type="button" class="w-100 btn btn-lg btn-primary"><li>ATP Sir</li></button></a>
+              <li>PCM</li>
+            </ul>
+            <hr>
+            <a href="#" id="moreInfoLink2"><button class="btn btn-primary mb-2">Click to know more</button></a> <!-- Use unique id -->
+            <div id="moreInfoDropdown2" class="d-none"> <!-- Use unique id -->
+              <div class="container">
+                <div class="row">
+                  <div class="col-lg-6">
+                    <ul class="dropdown-menu position-static d-grid gap-1 p-2 rounded-3 mx-0 border-0 shadow w-220px" data-bs-theme="dark">
+                      <li><a class="dropdown-item rounded-2 active">5:30 to 6:30 PM</a></li>
+                      <li><a class="dropdown-item rounded-2">Dedicated Doubt Session</a></li>
+                    </ul>
+                  </div>
+                  <div class="col-lg-6">
+                    <img src="css/amandev.jpg" class="teacher">
+                    <li>Aman Dev Sir</li>
+                    <li>7456038736</li>
+                  </div>
+                  <hr>
+                  <div class="container">
+                    <a href="/classes-enrolled"> <button type="button" class="btn btn-light mx-4 mb-2">Fee Pay (for registered students)</button></a>
+                    
+                  <a href="/class-fee" class="AmanDev-Sir"><button type="button" class="w-100 btn btn-lg btn-primary" value="Aman Dev Sir" id="faculty"onclick="submitValue( 'Aman Dev sir','10th', 'ICSE')"><li> Enroll (for New Admission )</li></button></a>
+                </div>
+              </div> </div>  
+            </div>
           </div>
         </div>
       </div>
-      
-      
     </div>
-  </main>
+    <div class="row">
+      <div class="col-6  text-center">
+        <div class="card mb-4 rounded-3 shadow-sm bg-warning">
+          <div class="card-header">
+            <div class="container">
+              <h4 class="my-0 fw-normal">Class-11th</h4>
+            </div>
+          </div>
+          <div class="card-body">
+            <h1 class="card-title pricing-card-title">CBSE<small class="text-body-secondary fw-light"></small></h1>
+            <ul class="list-unstyled mt-3 mb-4">
+              <li>Economics</li>
+            </ul>
+            <hr>
+            <a href="#" id="moreInfoLink3"><button class="btn btn-primary mb-2">Click to know more</button></a> <!-- Use unique id -->
+            <div id="moreInfoDropdown3" class="d-none"> <!-- Use unique id -->
+              <div class="container">
+                <div class="row">
+                  <div class="col-lg-6">
+                    <ul class="dropdown-menu position-static d-grid gap-1 p-2 rounded-3 mx-0 border-0 shadow w-220px" data-bs-theme="dark">
+                      <li><a class="dropdown-item rounded-2 active">6:30 to 7:30 PM</a></li>
+                      <li><a class="dropdown-item rounded-2">Dedicated Doubt Session</a></li>
+                    </ul>
+                  </div>
+                  <div class="col-lg-6">
+                    <img src="css/amit.jpg" class="teacher">
+                    <li>Akansha Mam</li>
+                    <li>6395736536</li>
+                  </div>
+                  <hr>
+                  <div class="container">
+                    <a href="/classes-enrolled"> <button type="button" class="btn btn-light mx-4 mb-2">Fee Pay (for registered students)</button></a>
+                    
+                <button type="button" class="w-100 btn btn-lg btn-primary" value="Akansha Mam" id="faculty" onclick="submitValue( 'Akansha Mam','11th', 'CBSE')"><li> Enroll (for New Admission )</li></button></a>
+                </div> </div>  
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+      <div class="col-6  text-center">
+        <div class="card mb-4 rounded-3 shadow-sm bg-warning">
+          <div class="card-header">
+            <div class="container">
+              <h4 class="my-0 fw-normal">Class-11th</h4>
+            </div>
+          </div>
+          <div class="card-body">
+            <h1 class="card-title pricing-card-title">All Boards<small class="text-body-secondary fw-light"></small></h1>
+            <ul class="list-unstyled mt-3 mb-4">
+              <li>Physics</li>
+            </ul>
+            <hr>
+            <a href="#" id="moreInfoLink4"><button class="btn btn-primary mb-2">Click to know more</button></a> <!-- Use unique id -->
+            <div id="moreInfoDropdown4" class="d-none"> <!-- Use unique id -->
+              <div class="container">
+                <div class="row">
+                  <div class="col-lg-6">
+                    <ul class="dropdown-menu position-static d-grid gap-1 p-2 rounded-3 mx-0 border-0 shadow w-220px" data-bs-theme="dark">
+                      <li><a class="dropdown-item rounded-2 active">6 PM to 7 PM</a></li>
+                      <li><a class="dropdown-item rounded-2">Dedicated Doubt Session</a></li>
+                    </ul>
+                  </div>
+                  <div class="col-lg-6">
+                    <img src="css/atp.jpg" class="teacher">
+                    <li>ATP sir</li>
+                    <li>7456038736</li>
+                  </div>
+                  <hr>
+                  <div class="container">
+                    <a href="/classes-enrolled"> <button type="button" class="btn btn-light mx-4 mb-2">Fee Pay (for registered students)</button></a>
+                    
+                <button type="button" class="w-100 btn btn-lg btn-primary" value="ATP sir" id="faculty" onclick="submitValue( 'ATP sir','11th', 'CBSE+ICSE')"><li> Enroll (for New Admission )</li></button></a>
+                </div> </div>  
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-6  text-center">
+        <div class="card mb-4 rounded-3 shadow-sm bg-warning">
+          <div class="card-header">
+            <div class="container">
+              <h4 class="my-0 fw-normal">Class-8th</h4>
+            </div>
+          </div>
+          <div class="card-body">
+            <h1 class="card-title pricing-card-title">CBSE & ICSE<small class="text-body-secondary fw-light"></small></h1>
+            <ul class="list-unstyled mt-3 mb-4">
+              <li>PCM</li>
+            </ul>
+            <hr>
+            <a href="#" id="moreInfoLink5"><button class="btn btn-primary mb-2">Click to know more</button></a> <!-- Use unique id -->
+            <div id="moreInfoDropdown5" class="d-none"> <!-- Use unique id -->
+              <div class="container">
+                <div class="row">
+                  <div class="col-lg-6">
+                    <ul class="dropdown-menu position-static d-grid gap-1 p-2 rounded-3 mx-0 border-0 shadow w-220px" data-bs-theme="dark">
+                      <li><a class="dropdown-item rounded-2 active">5:30 PM to 6:30 PM</a></li>
+                      <li><a class="dropdown-item rounded-2">Dedicated Doubt Session</a></li>
+                    </ul>
+                  </div>
+                  <div class="col-lg-6">
+                    <img src="css/shekher.jpg" class="teacher">
+                    <li>SP Sir</li>
+                    <li>999799975</li>
+                  </div>
+                  <hr>
+                  <div class="container">
+                    <a href="/classes-enrolled"> <button type="button" class="btn btn-light mx-4 mb-2">Fee Pay (for registered students)</button></a>
+                    
+                <button type="button" class="w-100 btn btn-lg btn-primary" value="Shekher Pant Sir" id="faculty" onclick="submitValue( 'SP sir','8th', 'CBSE+ICSE')"><li> Enroll (for New Admission )</li></button></a>
+                </div> </div>  
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-6  text-center">
+        <div class="card mb-4 rounded-3 shadow-sm bg-warning">
+          <div class="card-header">
+            <div class="container">
+              <h4 class="my-0 fw-normal">Class-12th</h4>
+            </div>
+          </div>
+          <div class="card-body">
+            <h1 class="card-title pricing-card-title">All Boards<small class="text-body-secondary fw-light"></small></h1>
+            <ul class="list-unstyled mt-3 mb-4">
+              <li>Physics</li>
+            </ul>
+            <hr>
+            <a href="#" id="moreinfoLink6"><button class="btn btn-primary mb-2">Click to know more</button></a> <!-- Use unique id -->
+            <div id="moreinfoDropdown6" class="d-none"> <!-- Use unique id -->
+              <div class="container">
+                <div class="row">
+                  <div class="col-lg-6">
+                    <ul class="dropdown-menu position-static d-grid gap-1 p-2 rounded-3 mx-0 border-0 shadow w-220px" data-bs-theme="dark">
+                      <li><a class="dropdown-item rounded-2 active">5 PM to 6 PM</a></li>
+                      <li><a class="dropdown-item rounded-2">Dedicated Doubt Session</a></li>
+                    </ul>
+                  </div>
+                  <div class="col-lg-6">
+                    <img src="css/atp.jpg" class="teacher">
+                    <li>ATP Sir</li>
+                    <li>7456038736</li>
+                  </div>
+                  <hr>
+                  <div class="container">
+                    <a href="/classes-enrolled"> <button type="button" class="btn btn-light mx-4 mb-2">Fee Pay (for registered students)</button></a>
+                    
+                <button type="button" class="w-100 btn btn-lg btn-primary"value="ATP Sir"id="faculty"  onclick="submitValue( 'ATP sir','12th', 'CBSE+ICSE')"><li> Enroll (for New Admission )</li></button></a>
+              </div>  </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      </div>
+
+      <div class="row">
+        <div class="col-sm-4 col-lg-12 text-center">
+          <div class="card mb-4 rounded-3 shadow-sm bg-warning">
+            <div class="card-header">
+              <div class="container">
+                <h4 class="my-0 fw-normal">Class-9th</h4>
+              </div>
+            </div>
+            <div class="card-body">
+              <h1 class="card-title pricing-card-title">CBSE & ICSE<small class="text-body-secondary fw-light"></small></h1>
+              <ul class="list-unstyled mt-3 mb-4">
+                <li>PCM</li>
+              </ul>
+              <hr>
+              <a href="#" id="moreinfoLink7"><button class="btn btn-primary mb-2">Click to know more</button></a> <!-- Use unique id -->
+              <div id="moreinfoDropdown7" class="d-none"> <!-- Use unique id -->
+                <div class="container">
+                  <div class="row">
+                    <div class="col-lg-6">
+                      <ul class="dropdown-menu position-static d-grid gap-1 p-2 rounded-3 mx-0 border-0 shadow w-220px" data-bs-theme="dark">
+                        <li><a class="dropdown-item rounded-2 active">5:30 PM to 6:30 PM</a></li>
+                        <li><a class="dropdown-item rounded-2">Dedicated Doubt Session</a></li>
+                      </ul>
+                    </div>
+                    <div class="col-lg-6">
+                      <img src="css/shekher.jpg" class="teacher">
+                      <li>SP Sir</li>
+                      <li>999799975</li>
+                    </div>
+                    <hr>
+                    <div class="container">
+                      <a href="/classes-enrolled"> <button type="button" class="btn btn-light mx-4 mb-2">Fee Pay (for registered students)</button></a>
+                      
+                    <button type="button" class="w-100 btn btn-lg btn-primary" value="Shekher Pant Sir" onclick="submitValue( 'SP sir','9th', 'CBSE+ICSE')" id="faculty"><li>Enroll (for New Admission)</li></button>
+                  </div>
+                </div> </div>  
+              </div>
+            </div>
+          </div>
+        </div>
+   
+     
+    </div>
+  </div>
+</main>
+<script>
+ 
+
   
+ 
+
+  function submitValue(teacher, className, boardName) {
+    // Store the faculty, class, and board information in LocalStorage
+    localStorage.setItem('faculty', teacher);
+    localStorage.setItem('class', className);
+    localStorage.setItem('board', boardName);
+
+    // Redirect to the fee payment form
+    window.location.href = '/class-reg'; // Change this to the correct URL of the fee payment form
+  }
+
+
+
   
+ 
+  document.addEventListener("DOMContentLoaded", function() {
+    // Toggle visibility for the first card
+    const moreInfoLink1 = document.getElementById("moreInfoLink1");
+    const moreInfoDropdown1 = document.getElementById("moreInfoDropdown1");
+    moreInfoLink1.addEventListener("click", function(event) {
+      event.preventDefault();
+      moreInfoDropdown1.classList.toggle("d-none");
+    });
+
+    // Toggle visibility for the second card
+    const moreInfoLink2 = document.getElementById("moreInfoLink2");
+    const moreInfoDropdown2 = document.getElementById("moreInfoDropdown2");
+    moreInfoLink2.addEventListener("click", function(event) {
+      event.preventDefault();
+      moreInfoDropdown2.classList.toggle("d-none");
+    });
+
+    // Toggle visibility for the third card
+    const moreInfoLink3 = document.getElementById("moreInfoLink3");
+    const moreInfoDropdown3 = document.getElementById("moreInfoDropdown3");
+    moreInfoLink3.addEventListener("click", function(event) {
+      event.preventDefault();
+      moreInfoDropdown3.classList.toggle("d-none");
+    });
+    const moreInfoLink4 = document.getElementById("moreInfoLink4");
+    const moreInfoDropdown4 = document.getElementById("moreInfoDropdown4");
+    moreInfoLink4.addEventListener("click", function(event) {
+      event.preventDefault();
+      moreInfoDropdown4.classList.toggle("d-none");
+    });
+    const moreInfoLink5 = document.getElementById("moreInfoLink5");
+    const moreInfoDropdown5 = document.getElementById("moreInfoDropdown5");
+    moreInfoLink5.addEventListener("click", function(event) {
+      event.preventDefault();
+      moreInfoDropdown5.classList.toggle("d-none");
+    });
+    const moreinfoLink6 = document.getElementById("moreinfoLink6");
+    const moreinfoDropdown6 = document.getElementById("moreinfoDropdown6");
+    moreinfoLink6.addEventListener("click", function(event) {
+      event.preventDefault();
+      moreinfoDropdown6.classList.toggle("d-none");
+    });
+    const moreinfoLink7 = document.getElementById("moreinfoLink7");
+    const moreinfoDropdown7 = document.getElementById("moreinfoDropdown7");
+    moreinfoLink7.addEventListener("click", function(event) {
+      event.preventDefault();
+      moreinfoDropdown7.classList.toggle("d-none");
+    });
+  });
+</script>
+
 
 <%- include('partials/footer') %>

@@ -49,6 +49,7 @@ const storage=multer.memoryStorage({
  
 const upload=multer({storage})
  
+const Questions=[];
 
 
  
@@ -144,8 +145,8 @@ const studRegisDetailSchema=new mongoose.Schema({
     contentType: String
 },
 Seat:Number,
-Amount:Number,
-Reg:Number
+Amount:String,
+Reg:String
 })
 
 //reading from google sheets
@@ -478,9 +479,66 @@ const DecSchema=new mongoose.Schema({
   
 })
 
+const classStudFee=new mongoose.Schema({
+  Reg:String,
+  Name:String,
+ContactNo:Number,
+  Month:String,
+  Batch:String,
+  Subject:String,
+  Faculty:String,
+  PaymentMethod:String,
+  Amount:Number,
+  PaymentPhoto: {
+    data: Buffer,
+    contentType: String
+}
+
+
+  
+})
+const classRegisStud=new mongoose.Schema({
+  Reg:String,
+  Name:String,
+  Gender:String,
+Class:String,
+Subject:String,
+Board:String,
+Faculty:String,
+School:String,
+  email:String,
+  DOB:Date,
+  FatherName:String,
+  MotherName:String,
+  ContactNo1:Number,
+  ContactNo2:Number,
+  Address:String,
+  AadharNo:Number,
+  AdharCardPhoto:{
+    data: Buffer,
+    contentType: String
+},
+  PrepareForExam:String,
+  
+  Photo:
+  {
+      data: Buffer,
+      contentType: String
+  },
+
+
+
+
+})
 
  
   
+
+
+const faq=new mongoose.Schema({
+  Question:String,
+  Answer:String})
+
 
 userSchema.plugin(passportLocalMongoose);//hash and salt our password and save users in mongoDB database
 userSchema.plugin(findOrCreate);
@@ -512,7 +570,10 @@ const Nov=mongoose.model("nov",NovSchema);
 
 const Dec=mongoose.model("dec",DecSchema);
 
+const Students=mongoose.model("StudFeeClass",classStudFee);
+const Faqs=mongoose.model("FreqAskQuestions",faq);
 
+const ClassRegStudent=mongoose.model("ClassRegStudent", classRegisStud);
 // CHANGE: USE "createStrategy" INSTEAD OF "authenticate"
 passport.use(User.createStrategy());
 
@@ -622,12 +683,21 @@ app.get('/auth/facebook/intro',
     });
 
 app.get("/login",function(req,res)
-{
-    res.render("login");
+{const error=""
+    res.render("login",{errorMessage:error});
 })
 app.get("/register",function(req,res)
+{const error="";
+  res.render("register",{errorMessage:error});
+})
+app.get("/faq",function(req,res)
 {
-  res.render("register");
+  res.render("faq",{QuestionsArray:Questions});
+})
+app.get("/classes-enrolled",function(req,res)
+{const reg="";
+const error="";
+  res.render("classes-enrolled",{errorMessage:error,regis:reg});
 })
 app.get("/intro",function(req,res){
 // {const dataId = "0x3908ed08d3bdd33f:0xc82a9e75e23749e4";
@@ -672,11 +742,42 @@ res.render("intro")
 
 
 
-app.get("/library",function(req,res)
-{
-//found document collection
-    res.render("library");
-})
+app.get("/library", function(req, res) {
+  // Use the Mongoose aggregate method to group and count documents by the "Shift" field
+  LibstudData.aggregate([
+    {
+      $group: {
+        _id: "$Shift",
+        count: { $sum: 1 }
+      }
+    }
+  ])
+  .then((result) => {
+    // result is an array containing objects like { _id: "Shift value", count: number_of_documents }
+    // We'll convert the array to an object for easy access
+    const seatsAvailable = {};
+    ["9 PM to 6 AM", "2 PM to 11 PM", "7 AM to 7 PM", "24*7","2 PM to 9 PM","7 PM to 11 PM","7 AM to 2 PM"].forEach((shift) => {
+      seatsAvailable[shift] = 0;
+    });
+    result.forEach((item) => {
+     
+      if(item.count!=0){
+      seatsAvailable[item._id] = item.count;}
+ else
+      {
+        seatsAvailable[item._id] = 0;
+      }
+    });
+
+    // Pass the seatsAvailable object to your template for rendering on the website
+    res.render("library", { seats:seatsAvailable});
+  })
+  .catch((err) => {
+    console.error("Error fetching data:", err);
+    res.status(500).send("Error fetching data");
+  });
+});
+
 app.get("/Shift",function(req,res)
 {
 //found document collection
@@ -685,7 +786,7 @@ app.get("/Shift",function(req,res)
 
 app.get("/already-regis",function(req,res)
 {
-    res.render("already-regis");
+    res.render("already-regis",{errorMessage:""});
 })
 app.get("/new-regis",function(req,res)
 { 
@@ -717,13 +818,21 @@ app.get("/Batches",function(req,res)
 //found document collection
     res.render("Batches");
 })
+app.get("/class-reg",function(req,res)
+{
+//found document collection
+    res.render("class-reg");
+})
 app.get("/class-fee",function(req,res)
 {const month = ["January","February","March","April","May","June","July","August","September","October","November","December"];
 
 const d = new Date();
 const mon = month[d.getMonth()];
 //found document collection
-    res.render("class-fee",{monthName:mon});
+const reg="";
+    res.render("class-fee",{monthName:mon,regis:reg});
+    const Teachers=["ATP_Sir","AmanDev_Sir","ShekherPant_Sir","Amit_Sir","Akansha_Mam"];
+
 })
 
 app.get("/appreciate",function(req,res)
@@ -740,7 +849,10 @@ res.render("contact");
 )
 
 
-
+app.get("/class-regis",function(req,res)
+{
+  res.render("class-regis");
+})
 
 
 app.post("/already-regis", function(req, res) {
@@ -756,13 +868,13 @@ app.post("/already-regis", function(req, res) {
         
       } else {
         const error="You are not registered"
-        res.render("already-regis",{errorin:error}); // Render a "not-found" view if the document is not found
+        res.render("already-regis",{errorMessage:"You Are not Registered Yet!!"}); // Render a "not-found" view if the document is not found
       }
     })
     .catch((error) => {
       // Handle the error
       console.error(error);
-      res.redirect("/library"); // Redirect to an error page or display an error message
+      res.render("already-regis",{errorMessage:"You Are not Registered Yet!!"}); // Redirect to an error page or display an error message
     });
 });
 
@@ -809,8 +921,8 @@ app.post("/register", function(req, res) {
   User.findOne({ username: req.body.username })
   .then((foundUser) => {
       if (foundUser) {
-        // User already exists, display error message
-       // res.render("register", { error: "User already exists." });
+    
+       res.render("register", { errorMessage: "User already exists." });
       } else {
         User.register(
           {
@@ -869,7 +981,7 @@ app.post("/login", function(req, res, next) {
 
     if (!user) {
       // Authentication failed, display error message
-      res.render("login", { error: "Invalid username or password." });
+      res.render("login", { errorMessage: "Invalid username or password." });
     } else {
       req.login(user, function(err) {
         if (err) {
@@ -1001,10 +1113,10 @@ app.post("/already-regis", function(req, res) {
 
   LibstudData.findOne({ Reg: regNO })
     .then((result) => {
-      if (result.Reg === regNO) {
+      if (result.Reg == regNO) {
         res.redirect("/payment");
       } else {
-        res.render("payment"); // Render a "not-found" view if the document is not found
+        res.render("payment",{errorMessage:""}); // Render a "not-found" view if the document is not found
       }
     })
     .catch((error) => {
@@ -1128,471 +1240,173 @@ app.post("/payment", upload.single("paymentPhoto") ,(req,res) => {
     res.redirect("/error");
   });})
 
-// app.post("/payment", upload.fields([
-//   { name: 'paymentPhoto', maxCount: 1 }
+  app.post("/faq",function(req,res)
+  {  const Ques=req.body.ques;
+    const ques=new Faqs({
+      Question:req.body.ques,
+      Answer:""
+    
 
-// ]), function(req, res, next) {
-  
-//   const d = new Date();
-//   const month = ['Jan', 'Feb', 'March', 'April', 'May', 'June', 'July', 'Aug', 'Sept', 'Oct', 'Nov', 'Dec'];
-//   const currentMonth = month[d.getMonth()];
+    })
 
-//   let StudFeeClass;
-//   switch (currentMonth) {
-//     case 'Jan':
-//       StudFeeClass = Jan;
-//       break;
-//     case 'Feb':
-//       StudFeeClass = Feb;
-//       break;
-//       case 'March':
-//         StudFeeClass = March;
-//         break;
-//         case 'April':
-//           StudFeeClass = April;
-//           break;
-//           case 'May':
-//             StudFeeClass = May;
-//             break;
-//             case 'June':
-//               StudFeeClass = June;
-//               break;
-//               case 'July':
-//                 StudFeeClass = July;
-//                 break;
-                
-//                 case 'Aug':
-//                   StudFeeClass = Aug;
-//                   break;
-//                   case 'Sept':
-//                     StudFeeClass = Sept;
-//                     break;
-//                     case 'Oct':
-//                     StudFeeClass = Oct;
-//                     break;
-//                     case 'Nov':
-//                     StudFeeClass = Nov;
-//                     break;
-//                     case 'Dec':
-//                     StudFeeClass = Dec;
-//                     break;
-//     // Add cases for other months as needed
-//     default:
-//       // Handle the case where the current month doesn't have a corresponding class
-//       res.redirect("/error");
-//       return;
-//   }
-//   const studFee = new StudFeeClass( { Reg: req.body.regNO,
-//     Name: req.body.name,
-//     Month: req.body.month,
-//     Shift: req.body.shift,
-//     Seat: req.body.seat,
-//     PaymentMethod: req.body.paymentMethod,
-//     PaymentPhoto: req.body.paymentPhoto
-//   });
+    ques.save()
+    .then((found) => {
+     
+    Faqs.updateOne({Question:req.body.ques},{Answer:"hi,your answer will be provided soon"})
+    .then((result ) => {
+      Questions.push(result);
+      console.log(result);
+      console.log(Questions[0]);
+      res.redirect("/faq");
+    })
+     
+  })})
 
-//   studFee.save()
-//   .then((result) => {
-//     res.redirect("/thanku");
-//   })
-//   .catch((error) => {
-//     // Handle the error
-//     console.error(error);
-//     // Redirect to an error page or display an error message
-//     res.redirect("/error");
-//   });
-// });
-app.post("/class-fee",function(req,res)
-{
+app.post("/class-fee", upload.single("paymentPhoto") ,(req,res) => {
+
 //found document collection
+const classStudent = new Students( { 
+   Name:req.body.name,
+ContactNo:req.body.contact,
+  Month:req.body.month,
+  Batch:req.body.batch,
+  Subject:req.body.subject,
+  Faculty:req.body.faculty,
+  PaymentMethod:req.body.paymentMethod,
+  Amount:req.body.amount,
+  PaymentPhoto: {
+    data: req.file.buffer,
+
+      contentType:req.file.mimetype
+}
+   
+});
+
+classStudent.save()
+.then((result) => {
+
     res.redirect("/appreciate");
-})
-// app.post("/payment", function(req, res) {
-//   const d = new Date();
-//   const month = ['Jan', 'Feb', 'March', 'April', 'May', 'June', 'July', 'Aug', 'Sept', 'Oct', 'Nov', 'Dec'];
-//   const currentMonth = month[d.getMonth()];
-
-//   let StudFeeClass;
-//   switch (currentMonth) {
-//     case 'Jan':
-//       StudFeeClass = Jan;
-//       break;
-//     case 'Feb':
-//       StudFeeClass = Feb;
-//       break;
-//       case 'March':
-//         StudFeeClass = March;
-//         break;
-//         case 'April':
-//           StudFeeClass = April;
-//           break;
-//           case 'May':
-//             StudFeeClass = May;
-//             break;
-//             case 'June':
-//               StudFeeClass = June;
-//               break;
-//               case 'July':
-//                 StudFeeClass = July;
-//                 break;
-                
-//                 case 'Aug':
-//                   StudFeeClass = Aug;
-//                   break;
-//                   case 'Sept':
-//                     StudFeeClass = Sept;
-//                     break;
-//                     case 'Oct':
-//                     StudFeeClass = Oct;
-//                     break;
-//                     case 'Nov':
-//                     StudFeeClass = Nov;
-//                     break;
-//                     case 'Dec':
-//                     StudFeeClass = Dec;
-//                     break;
-//     // Add cases for other months as needed
-//     default:
-//       // Handle the case where the current month doesn't have a corresponding class
-//       res.redirect("/error");
-//       return;
-//   }
-
-//   const studFee = new StudFeeClass({
-//     Reg: req.body.regNO,
-//     Name: req.body.name,
-//     Month: req.body.month,
-//     Shift: req.body.shift,
-//     Seat: req.body.seat,
-//     PaymentMethod: req.body.paymentMethod,
-//     PaymentPhoto: req.body.paymentPhoto
-//   });
-
-//   studFee.save()
-//     .then((result) => {
-//       res.redirect("/thanku");
-//     })
-//     .catch((error) => {
-//       // Handle the error
-//       console.error(error);
-//       // Redirect to an error page or display an error message
-//       res.redirect("/error");
-//     });
-// });
-
-
-//   }
-//   else if(Mon=="Feb")
-//   {
-//     function addDoc(){
-//       const studFee = new Feb;({
-//         Reg: req.body.regNO,
-//         Name: req.body.name,
-//         Month: req.body.month,
-//         Shift: req.body.shift,
-//         Seat: req.body.seat,
-//         PaymentMethod: req.body.paymentMethod,
-//         PaymentPhoto: req.body.paymentPhoto
-//       });
-      
-    
-//     //found document collection
-//     studFee.save()
-//     .then((result) => {
-//       res.redirect("/thanku");
-//     })
-//     .catch((error) => {
-//       // Handle the error
-//       console.error(error);
-//       // Redirect to an error page or display an error message
-//       res.redirect("/error");
-//     })
-//   }}
-//   else if(Mon=="March")
-//   {
-//     function addDoc(){
-//       const studFee = new March;({
-//         Reg: req.body.regNO,
-//         Name: req.body.name,
-//         Month: req.body.month,
-//         Shift: req.body.shift,
-//         Seat: req.body.seat,
-//         PaymentMethod: req.body.paymentMethod,
-//         PaymentPhoto: req.body.paymentPhoto
-//       });
-      
-    
-//     //found document collection
-//     studFee.save()
-//     .then((result) => {
-//       res.redirect("/thanku");
-//     })
-//     .catch((error) => {
-//       // Handle the error
-//       console.error(error);
-//       // Redirect to an error page or display an error message
-//       res.redirect("/error");
-//     })
-//   }}
-//   else if(Mon=="April")
-//   {
-//     function addDoc(){
-//       const studFee = new April;({
-//         Reg: req.body.regNO,
-//         Name: req.body.name,
-//         Month: req.body.month,
-//         Shift: req.body.shift,
-//         Seat: req.body.seat,
-//         PaymentMethod: req.body.paymentMethod,
-//         PaymentPhoto: req.body.paymentPhoto
-//       });
-      
-    
-//     //found document collection
-//     studFee.save()
-//     .then((result) => {
-//       res.redirect("/thanku");
-//     })
-//     .catch((error) => {
-//       // Handle the error
-//       console.error(error);
-//       // Redirect to an error page or display an error message
-//       res.redirect("/error");
-//     })
-//   }}
-//   else if(Mon=="May")
-//   {
-//     function addDoc(){
-//       const studFee = new May;({
-//         Reg: req.body.regNO,
-//         Name: req.body.name,
-//         Month: req.body.month,
-//         Shift: req.body.shift,
-//         Seat: req.body.seat,
-//         PaymentMethod: req.body.paymentMethod,
-//         PaymentPhoto: req.body.paymentPhoto
-//       });
-      
-    
-//     //found document collection
-//     studFee.save()
-//     .then((result) => {
-//       res.redirect("/thanku");
-//     })
-//     .catch((error) => {
-//       // Handle the error
-//       console.error(error);
-//       // Redirect to an error page or display an error message
-//       res.redirect("/error");
-//     })
-//   }}
-//   else if(Mon=="June")
-//   {
-//     function addDoc(){
-//       const studFee = new June;({
-//         Reg: req.body.regNO,
-//         Name: req.body.name,
-//         Month: req.body.month,
-//         Shift: req.body.shift,
-//         Seat: req.body.seat,
-//         PaymentMethod: req.body.paymentMethod,
-//         PaymentPhoto: req.body.paymentPhoto
-//       });
-      
-    
-//     //found document collection
-//     studFee.save()
-//     .then((result) => {
-//       res.redirect("/thanku");
-//     })
-//     .catch((error) => {
-//       // Handle the error
-//       console.error(error);
-//       // Redirect to an error page or display an error message
-//       res.redirect("/error");
-//     })
-//   }}
-//   else if(Mon=="July")
-//   {
-    
-//       const studFee = new July;({
-//         Reg: req.body.regNO,
-//         Name: req.body.name,
-//         Month: req.body.month,
-//         Shift: req.body.shift,
-//         Seat: req.body.seat,
-//         PaymentMethod: req.body.paymentMethod,
-//         PaymentPhoto: req.body.paymentPhoto
-//       });
-      
-    
-//     //found document collection
-//     studFee.save()
-//     .then((result) => {
-//       res.redirect("/thanku");
-//     })
-//     .catch((error) => {
-//       // Handle the error
-//       console.error(error);
-//       // Redirect to an error page or display an error message
-//       res.redirect("/error");
-//     })
-//   }
-//   else if(Mon=="Aug")
-//   {
-    
-//       const studFee = new Aug;({
-//         Reg: req.body.regNO,
-//         Name: req.body.name,
-//         Month: req.body.month,
-//         Shift: req.body.shift,
-//         Seat: req.body.seat,
-//         PaymentMethod: req.body.paymentMethod,
-//         PaymentPhoto: req.body.paymentPhoto
-//       });
-      
-    
-//     //found document collection
-//     studFee.save()
-//     .then((result) => {
-//       res.redirect("/thanku");
-//     })
-//     .catch((error) => {
-//       // Handle the error
-//       console.error(error);
-//       // Redirect to an error page or display an error message
-//       res.redirect("/error");
-//     })
-//   }
-//   else if(Mon=="Sept")
-//   {
-    
-//       const studFee = new Sept;({
-//         Reg: req.body.regNO,
-//         Name: req.body.name,
-//         Month: req.body.month,
-//         Shift: req.body.shift,
-//         Seat: req.body.seat,
-//         PaymentMethod: req.body.paymentMethod,
-//         PaymentPhoto: req.body.paymentPhoto
-//       });
-      
-    
-//     //found document collection
-//     studFee.save()
-//     .then((result) => {
-//       res.redirect("/thanku");
-//     })
-//     .catch((error) => {
-//       // Handle the error
-//       console.error(error);
-//       // Redirect to an error page or display an error message
-//       res.redirect("/error");
-//     })
-//   }
-//   else if(Mon=="Oct")
-//   {
-    
-//       const studFee = new Oct;({
-//         Reg: req.body.regNO,
-//         Name: req.body.name,
-//         Month: req.body.month,
-//         Shift: req.body.shift,
-//         Seat: req.body.seat,
-//         PaymentMethod: req.body.paymentMethod,
-//         PaymentPhoto: req.body.paymentPhoto
-//       });
-      
-    
-//     //found document collection
-//     studFee.save()
-//     .then((result) => {
-//       res.redirect("/thanku");
-//     })
-//     .catch((error) => {
-//       // Handle the error
-//       console.error(error);
-//       // Redirect to an error page or display an error message
-//       res.redirect("/error");
-//     })
-//   }
-//   else if(Mon=="Nov")
-//   {
-    
-//       const studFee = new Nov;({
-//         Reg: req.body.regNO,
-//         Name: req.body.name,
-//         Month: req.body.month,
-//         Shift: req.body.shift,
-//         Seat: req.body.seat,
-//         PaymentMethod: req.body.paymentMethod,
-//         PaymentPhoto: req.body.paymentPhoto
-//       });
-      
-    
-//     //found document collection
-//     studFee.save()
-//     .then((result) => {
-//       res.redirect("/thanku");
-//     })
-//     .catch((error) => {
-//       // Handle the error
-//       console.error(error);
-//       // Redirect to an error page or display an error message
-//       res.redirect("/error");
-//     })
-//   }
-//   else if(Mon=="Dec")
-//   {
-    
-//       const studFee = new Dec;({
-//         Reg: req.body.regNO,
-//         Name: req.body.name,
-//         Month: req.body.month,
-//         Shift: req.body.shift,
-//         Seat: req.body.seat,
-//         PaymentMethod: req.body.paymentMethod,
-//         PaymentPhoto: req.body.paymentPhoto
-//       });
-      
-    
-//     //found document collection
-//     studFee.save()
-//     .then((result) => {
-//       res.redirect("/thanku");
-//     })
-//     .catch((error) => {
-//       // Handle the error
-//       console.error(error);
-//       // Redirect to an error page or display an error message
-//       res.redirect("/error");
-//     })
-//   }}
+})})
  
+app.post("/class-reg", upload.fields([
+  { name: 'adharCardPhoto' },
+  { name: 'photo'}
+
+]), function(req, res, next) 
+
+{const newStudent=new ClassRegStudent({
+
+  Name:req.body.name,
+  Gender:req.body.gender,
+Class:req.body.class,
+Subject:req.body.subject,
+Board:req.body.board,
+Faculty:req.body.faculty,
+School:req.body.school,
+  email: req.body.email,
+  
+  DOB:req.body.dob,
+  FatherName:req.body.fatherName,
+  MotherName:req.body.motherName,
+  ContactNo1:req.body.contactNo1,
+  ContactNo2:req.body.contactNo2,
+  Address:req.body.address,
+  AadharNo:req.body.adhaarNo,
+  AdharCardPhoto: {
+    data: req.files.adharCardPhoto[0].buffer,
+    contentType: req.files.adharCardPhoto[0].mimetype
+  },
+  PrepareForExam: req.body.prepareForExam,
+  
+  
+  Photo: {
+    data: req.files.photo[0].buffer,
+    contentType: req.files.photo[0].mimetype
+  },
+
+
+})
+// const data = fs.readFileSync(req.files.photo[0].path)
+
+// res.render('thanku', {
+//   image: data.toString('base64')
+// })
+
+
+newStudent.save()
+  .then((result) => { 
+    
+    
+   
+
+    var transporter = nodemailer.createTransport({
+      service: 'gmail',
+      auth: {
+        user: "edugainersclasses@gmail.com",
+        pass: 'uwknsogaphlblqkk'
+      }
+    })
+  ;
+    
+    var mailOptions = {
+      from: 'edugainersclasses@gmail.com',
+      to: req.body.email,
+      subject: "Regarding registration for the EduGainer's Library ",
+      html: '<html>' +
+      '<body>' +
+      '<h1 style="color: Green;">Thank you for registering with us.</h1>' +
+       ' <p style="color:Blue;">&#128591;</p>'+   ' <p style="color:Blue;">We will contact You soon to provide a unique <mark>Reg No</mark> !!!</p>'+'<br>'+
+      '<p style="color: Blue;">With Regards,</p>' +
+      '<p style="color: Green;">EduGainer\'s  Classes & Library, </p>'+'<p style="color: Blue;">Court Road,Uttarkashi</p>' +
+      '<p style="color: Blue;">Contact No: 9997999765</p>'+ '<p style="color: Blue;">Contact No: 8445192692</p>'+
+      '<p style="color: Blue;">Contact No: 9997999768</p>' +
+      '</body>' +
+      '</html>'
+    };
+    
+    transporter.sendMail(mailOptions, function(error, info){
+      if (error) {
+        console.log(error);
+      } else {
+        console.log('Email sent: ' + info.response);
+      }
+    })
+    
+    
+    res.redirect("/appreciate");
+   } )
+
+    ;
+  })
+
+
+  app.post("/classes-enrolled", function (req, res) {
+    const regNo = req.body.reg;
+
+    ClassRegStudent.findOne({ Reg: regNo })
+        .then((result) => {
+          const month = ["January","February","March","April","May","June","July","August","September","October","November","December"];
+
+const d = new Date();
+const mon = month[d.getMonth()];
+            if (result.Reg == regNo) {
+                res.render("class-fee", { regis: result.Reg, monthName:mon, facultyName:result.Faculty, ClassVal:result.Class, subject:result.Subject});
+            } else {
+                const message = "You are not provided any RegNo !! We will provide you soon";
+                res.render("classes-enrolled", { errorMessage: message });
+            }
+        })
+        .catch((error) => {
+            // Handle the error
+            console.error(error);
+
+            const message = "You are not provided any RegNo !! We will provide you soon";
+            res.render("classes-enrolled", { errorMessage: message });
+        });
+});
 
   
   
-// )
-
-//       { const username=req.body.username
-//         const password=req.body.password
-//           User.findOne({email:username})
-//           .then((foundUser) => {
-//             bcrypt.compare(password, foundUser.password, function(err, result) {
-//               // result == true
-//               if(result===true)
-//               {
-//                 res.render("secrets");
-//               }
-//           });
-       
-          
-    //  }
-    //       )
-    //   })
-   
-   
-   
 
 
 

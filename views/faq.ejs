@@ -1,0 +1,45 @@
+<!--Section: FAQ-->
+<%- include('partials/header') %>
+<section>
+  <h3 class="text-center mb-4 pb-2 text-primary fw-bold">FAQ</h3>
+  <p class="text-center mb-5">
+    Find the answers for the most frequently asked questions below
+  </p>
+
+  <div class="row">
+    <% for (let i = 0; i < QuestionsArray.length; i++) {
+      const question = QuestionsArray[i].Question;
+      const answer = QuestionsArray[i].Answer;
+    %>
+      <div class="col-md-4 mb-4">
+        <h6 class="mb-3 text-primary">
+          <i class="far fa-paper-plane text-primary pe-2"></i>
+         <h1> <%= question %>
+       
+       
+          <%= answer %></h1>
+       
+      </div>
+      <% if ((i + 1) % 3 === 0) { %>
+        </div><div class="row">
+      <% } %>
+    <% } %>
+  </div>
+
+</section>
+
+<main class="form-signin h-50 w-70 m-auto">
+  <div class="card">
+    <div class="card-body">
+      <form action="/faq" method="POST">
+        <div class="form-group">
+          <label for="ques">Question:</label>
+          <textarea id="ques" name="ques" rows="4" cols="20"></textarea>
+        </div>
+        <button type="submit" class="btn btn-success">Ask</button>
+      </form>
+    </div>
+  </div>
+</main>
+
+<%- include('partials/footer') %>

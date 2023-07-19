@@ -1,12 +1,27 @@
 
 
 <%- include('partials/classes-gradient') %>
+<style>
+  #typedtext {
+    font-family: 'Waiting for the Sunrise', cursive; 
+    font-size:30px; 
+    margin: 10px 50px; 
+    letter-spacing: 6px; 
+    font-weight: bold;
+    text-align: center;
+    color: Yellow;
+  }  
+</style>
+<div id="typedtext">
+  
+</div>
+
 
 <div class="row flex-lg-row-reverse align-items-center g-5 py-5">
-    <div class="col-10 col-sm-8 col-lg-6">
+    <div class="col-12 col-sm-8 col-lg-6">
       <div class="overflow-hidden">
         <div class="container px-5">
-          <div id="carouselExampleAutoplaying" class="carousel slide" data-bs-ride="carousel">
+          <div id="carouselExampleAutoplaying" class="carousel slide" data-bs-ride="carousel"  data-bs-interval="2000">
             <div class="carousel-inner">
               <div class="carousel-item active">
                 <img src="css/image1.jpg" class="lib-image" alt="...">
@@ -31,14 +46,96 @@
       </div>
     </div>
     <div class="col-lg-6 bg-">
-      <h1 class="display-5 fw-bold heading lh-1 mb-3 ">EduGainer's Classes</h1>
+      <h1 class="display-5 fw-bold heading lh-1 mb-3 mx-auto justify-contents-center">EduGainer's Classes</h1>
       <p class="lead">Welcome to Edugainer's Classes .We are the Best coaching Centre in Uttarkashi with very talented faculty . Our Student have reached several milestones and are continuing their journey of doing good for the society</p>
       <p class="lead">We don't think that education should be limited to only those who can afford it but should be universal and that is our main goal!!</p> <div class="d-grid gap-2 d-md-flex justify-content-md-start">
        
       </div>
-      <a href="/Batches" target="blank"><button  type="button" class="btn btn-danger mx-4">Batches</button></a>
+
+
+
+
+
+
+
+
+
+
+</div></div>
+
+
+
+<div class="container">
+  <div class="row">
+    <div class="col-sm-4 col-md-6 col-lg-4 mb-3">
+  
+
+    <div class="card" style="width: 18rem;">
+      <img src="css/poster2.png" class="card-img-top " alt="...">
+     
     </div>
   </div>
+  <div class="col-sm-4 col-md-6 col-lg-4 mb-3">
   
+
+    <div class="card" style="width: 18rem;">
+      <img src="css/poster1.jpg" class="card-img-top " alt="...">
+     
+    </div>
+  </div>
+
+  <div class="col-sm-4 col-md-6 col-lg-4 mb-3">
+  
+
+    <div class="card" style="width: 18rem;">
+      <img src="css/educlasses.jpg" class="card-img-top " alt="...">
+     
+    </div>
+  </div>
+
+</div>
+</div>
+
+<div class="d-flex justify-content-center">
+      
+      <a href="/Batches" target="blank"><button  type="button" class="btn btn-danger mx-auto ">Batches</button></a>
+    </div>
+  </div></div>
+  <script>
+    var aText = new Array(
+"A lucid track for learners"
+);
+var iSpeed = 100; // time delay of print out
+var iIndex = 0; // start printing array at this position
+var iArrLength = aText[0].length; // the length of the text array
+var iScrollAt = 20; // start scrolling up at this many lines
+
+var iTextPos = 0; // initialise text position
+var sContents = ''; // initialise contents variable
+var iRow; // initialise current row
+
+function typewriter() {
+  sContents = ' ';
+  iRow = Math.max(0, iIndex - iScrollAt);
+  var destination = document.getElementById("typedtext");
+
+  while (iRow < iIndex) {
+    sContents += aText[iRow++] + '<br />';
+  }
+  destination.innerHTML = sContents + aText[iIndex].substring(0, iTextPos) + "_";
+  if (iTextPos++ == iArrLength) {
+    iTextPos = 0;
+    iIndex++;
+    if (iIndex == aText.length) {
+      iIndex = 0; // Reset to the first line to repeat the typing effect
+    }
+    iArrLength = aText[iIndex].length;
+    setTimeout("typewriter()", 1000); // Add a pause before typing the next line
+  } else {
+    setTimeout("typewriter()", iSpeed);
+  }
+}
+typewriter();
+  </script>
 
 <%- include('partials/footer') %>

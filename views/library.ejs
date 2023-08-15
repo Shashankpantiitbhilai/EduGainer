@@ -14,6 +14,9 @@
       
 
     }
+    .lib-image{
+      width:900px;
+    }
     .card-intro .btn{
       margin-bottom: 6px;
    
@@ -86,7 +89,7 @@
     }
     .glow {
       font-size: 30px;
-      color:red;
+      color:wheat;
       text-align: center;
       animation: glow 1s ease-in-out infinite alternate;
     }
@@ -163,31 +166,58 @@
           transform: translate(50%, 50%);
       }
   }
-  
+  .amountalert{
+    text-align:center;
+  }
+  @media (max-width: 767px) {
+    .carousel-inner .lib-image {
+      width: 100%;
+    }
+  }
+  #typedtextintro {
+    font-family: 'Waiting for the Sunrise', cursive; 
+    font-size:30px; 
+    margin: 10px 50px; 
+    letter-spacing: 6px; 
+    font-weight: bold;
+    text-align: center;
+    color: Yellow;
+  }  
   </style>
  
 <div class="px-4 pt-5 my-5 text-center border-bottom bg-dark special mt-0">
-  <h1 class="display-4 fw-bold  text-warning ">Edugainer's Library</h1>
+  <h1 class="display-4 fw-bold  text-warning ">EduGainer's Library</h1>
   <div class="col-lg-6 mx-auto">
-    <p class="lead mb-4 text-white">We Provide world class facilities in our Library which you can find in anyone of the Best libraries</p>
+    <p class="lead mb-4 text-white">Unlock the treasure trove of knowledge at EduGainer's Library, where learning knows no bounds and curiosity finds its sanctuary</p>
 </div>
  
-  <div class="overflow-hidden">
-    
-    <div class="container px-5">
-      
-      <div id="carouselExampleAutoplaying" class="carousel slide" data-bs-ride="carousel" data-bs-interval="3000">
-        <div class="carousel-inner">
-          <div class="carousel-item active">
-            <img src="css/image1.jpg" class="lib-image" alt="...">
-          </div>
-          <div class="carousel-item">
-            <img src="css/image2.jpg"class="lib-image"  alt="...">
-          </div>
-          <div class="carousel-item">
-            <img src="css/image3.jpg" class="lib-image" alt="...">
-          </div>
+<div class="overflow-hidden">
+
+  <div class="container px-0 px-md-5"> <!-- Set px-0 for full-width on mobile devices -->
+
+    <div id="carouselExampleAutoplaying" class="carousel slide" data-bs-ride="carousel" data-bs-interval="3000">
+      <div class="carousel-inner">
+
+        <div class="carousel-item active">
+          <img src="css/lib3.jpg" class="lib-image d-block w-100" alt="Library images"> <!-- Use d-block and w-100 for full-width on mobile devices -->
         </div>
+
+        <div class="carousel-item">
+          <img src="css/image2.jpg" class="lib-image d-block w-100" alt="Library images"> <!-- Use d-block and w-100 for full-width on mobile devices -->
+        </div>
+
+        <div class="carousel-item">
+          <img src="css/lib1.jpg" class="lib-image d-block w-100" alt="Library images"> <!-- Use d-block and w-100 for full-width on mobile devices -->
+        </div>
+
+        <div class="carousel-item">
+          <img src="css/lib2.jpg" class="lib-image d-block w-100" alt="Library images"> <!-- Use d-block and w-100 for full-width on mobile devices -->
+        </div>
+
+      </div>
+   
+
+
         <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide="prev" >
           <span class="carousel-control-prev-icon" aria-hidden="true"></span>
           <span class="visually-hidden">Previous</span>
@@ -293,9 +323,17 @@
 </div>
 <div class="container">
   <marquee><p class="glow">Registration fee one time only !!&#128512; Seats Filling fast ,Hurry Up</p></marquee>
-<div class="row row-cols-3 row-cols-md-3 g-4 card-intro hidden " id="cards-section" >
+  <div class="hidden amountalert"id="cards-section">
+  <div class="alert alert-danger" role="alert">
+    <P><font color="red">Note:</font>  Library fee for <mark>new Registration </mark> is auto generated depending on the Date of Joining</P>
+      </div>
+      <div class="row row-cols-3 row-cols-md-3 g-4 card-intro  "  >
+
+ 
+    
+
   <div class="col-sm-12 col-4 last">
-    <div class="card h-100 text-bg-primary mb-3">
+    <div class="card h-100 text-bg-success mb-3">
       
       <div class="card-body container">
         
@@ -308,7 +346,7 @@
             <ul class="list-unstyled mb-0">
               <li><a class="dropdown-item d-flex align-items-center gap-2 py-2" >
                 <span class="d-inline-block bg-success rounded-circle p-1"></span>
-                Regis Fees Rs. 100
+                Reg Fees Rs. 100
               </a></li>
               <li><a class="dropdown-item d-flex align-items-center gap-2 py-2" >
                 <span class="d-inline-block bg-primary rounded-circle p-1"></span>
@@ -324,7 +362,7 @@
 
         <div class="container">
      <a href="/already-regis"> <button type="button" class="btn btn-light mx-4">Fee Pay</button></a>
-       <button type="button" class="btn btn-light"onclick="submitForm('7 AM to 2 PM', '500+100(reg)=Rs.600')">New Reg</button>
+       <button type="button" class="btn btn-light"onclick="submitForm('7 AM to 2 PM')">New Reg</button>
    </div>
       </div>
 
@@ -334,7 +372,7 @@
           <%const seatA= 92-seats["7 AM to 2 PM"] -seats["7 AM to 7 PM"] -seats["24*7"];
           if(seatA<=0)
           { %>
-            <small > Waiting List : <%= (1-seatA)*-1  %></small></span>
+            <small > Waiting List : <%= (seatA)*-1  %></small></span>
             
             
           
@@ -372,7 +410,7 @@
             <ul class="list-unstyled mb-0">
               <li><a class="dropdown-item d-flex align-items-center gap-2 py-2" >
                 <span class="d-inline-block bg-success rounded-circle p-1"></span>
-                Regis Fees Rs. 100
+                Reg Fees Rs. 100
               </a></li>
               <li><a class="dropdown-item d-flex align-items-center gap-2 py-2" >
                 <span class="d-inline-block bg-primary rounded-circle p-1"></span>
@@ -384,7 +422,7 @@
         
         </div>
         <a href="/already-regis"> <button type="button" class="btn btn-light  mx-4"> Fee pay</button></a>
-        <button type="button" class="btn btn-light " onclick="submitForm('2 PM to 9 PM', '500+100(reg)=Rs.600')">New Reg.</button></a>
+        <button type="button" class="btn btn-light " onclick="submitForm('2 PM to 9 PM')">New Reg.</button></a>
    
       </div>
       
@@ -410,7 +448,7 @@
     </div>
   </div>
   <div class="col-4 last">
-    <div class="card h-100 text-bg-danger mb-3">
+    <div class="card h-100 text-bg-success mb-3">
       
       <div class="card-body">
         <h5 class="card-title d-flex justify-content-center">7pm to 11pm</h5><hr>
@@ -422,7 +460,7 @@
             <ul class="list-unstyled mb-0">
               <li><a class="dropdown-item d-flex align-items-center gap-2 py-2" >
                 <span class="d-inline-block bg-success rounded-circle p-1"></span>
-                Regis Fees Rs. 100
+                Reg Fees Rs. 100
               </a></li>
               <li><a class="dropdown-item d-flex align-items-center gap-2 py-2" >
                 <span class="d-inline-block bg-primary rounded-circle p-1"></span>
@@ -435,7 +473,7 @@
         </div>
         <div class="container">
         <a href="/already-regis"> <button type="button" class="btn btn-light mx-4">Fee Pay</button></a>
-       <button type="button" class="btn btn-light"onclick="submitForm('7 PM to 11 PM', '300+100(reg)=Rs.400')">New Reg.</button></a>
+       <button type="button" class="btn btn-light"onclick="submitForm('7 PM to 11 PM')">New Reg.</button></a>
       </div>
       </div> 
       <div class="card-footer h1-seats neon text-center">
@@ -461,7 +499,7 @@
   </div>
 
 <div class="col-4 last">
-  <div class="card h-100 text-bg-info mb-3">
+  <div class="card h-100 text-bg-success mb-3">
     
     <div class="card-body">
       <h5 class="card-title d-flex justify-content-center">9pm to 6am</h5><hr>
@@ -473,7 +511,7 @@
           <ul class="list-unstyled mb-0">
             <li><a class="dropdown-item d-flex align-items-center gap-2 py-2" >
               <span class="d-inline-block bg-success rounded-circle p-1"></span>
-              Regis Fees Rs. 100
+              Reg Fees Rs. 100
             </a></li>
             <li><a class="dropdown-item d-flex align-items-center gap-2 py-2" >
               <span class="d-inline-block bg-primary rounded-circle p-1"></span>
@@ -486,7 +524,7 @@
       </div>
     <div class="container">
       <a href="/already-regis"> <button type="button" class="btn btn-light mx-4">Fee Pay</button></a>
-      <button type="button" class="btn btn-light"onclick="submitForm('9 PM to 6 AM', '500+100(reg)=Rs.600')">New Reg.</button></a>
+      <button type="button" class="btn btn-light"onclick="submitForm('9 PM to 6 AM')">New Reg.</button></a>
     </div>
     </div>
     
@@ -512,7 +550,7 @@
   </div>
 </div>
 <div class="col-4 last">
-  <div class="card h-100 text-bg-warning mb-3">
+  <div class="card h-100 text-bg-success mb-3">
     
     <div class="card-body">
       <h5 class="card-title d-flex justify-content-center">2pm to 11pm</h5><hr>
@@ -525,7 +563,7 @@
           <ul class="list-unstyled mb-0">
             <li><a class="dropdown-item d-flex align-items-center gap-2 py-2" >
               <span class="d-inline-block bg-success rounded-circle p-1"></span>
-              Regis Fees Rs. 100
+              Reg Fees Rs. 100
             </a></li>
             <li><a class="dropdown-item d-flex align-items-center gap-2 py-2" >
               <span class="d-inline-block bg-primary rounded-circle p-1"></span>
@@ -538,7 +576,7 @@
       </div>
       <div class="container">
       <a href="/already-regis"> <button type="button" class="btn btn-light mx-4">Fee Pay</button></a>
-      <button type="button" class="btn btn-light" onclick="submitForm('2 PM to 11 PM', '700+100(reg)=Rs.800')">New Reg.</button></a>
+      <button type="button" class="btn btn-light" onclick="submitForm('2 PM to 11 PM')">New Reg.</button></a>
    </div>
     </div>
     <div class="card-footer h1-seats neon text-center">
@@ -561,9 +599,9 @@
   </div>
 </div>
 <div class="col-4 last pink">
-  <div class="card h-100 text-bg-light mb-3 pink">
+  <div class="card h-100 text-bg-success mb-3 pink">
     
-    <div class="card-body pink">
+    <div class="card-body ">
       <h5 class="card-title d-flex justify-content-center">7am to 7pm</h5><hr>
       <div class="d-flex flex-column flex-md-row p-4 gap-4 py-md-5 align-items-center justify-content-center">
         <div class="dropdown-menu d-block position-static pt-0 mx-0 rounded-3 shadow overflow-hidden w-280px" data-bs-theme="light">
@@ -573,7 +611,7 @@
           <ul class="list-unstyled mb-0">
             <li><a class="dropdown-item d-flex align-items-center gap-2 py-2" >
               <span class="d-inline-block bg-success rounded-circle p-1"></span>
-              Regis Fees Rs. 100
+              Reg Fees Rs. 100
             </a></li>
             <li><a class="dropdown-item d-flex align-items-center gap-2 py-2" >
               <span class="d-inline-block bg-primary rounded-circle p-1"></span>
@@ -586,7 +624,7 @@
       </div>
       <div class="container">
       <a href="/already-regis"> <button type="button" class="btn btn-light mx-4">Fee Pay</button></a>
-      <button type="button" class="btn btn-light" onclick="submitForm('7 AM to 7 PM', '800+100(reg)=Rs.900')">New Reg.</button></a>
+      <button type="button" class="btn btn-light" onclick="submitForm('7 AM to 7 PM')">New Reg.</button></a>
    </div>
     </div>
     
@@ -621,8 +659,8 @@
 </div>
 
   <div class="col-sm-12 col-lg-12 text-center last">
-    <div class="card h-100 text-bg-dark mb-3">
-      <div class="card-body green">
+    <div class="card h-100 text-bg-success mb-3">
+      <div class="card-body ">
         <h5 class="card-title d-flex justify-content-center">24*7</h5>
         <hr>
         <div class="d-flex flex-column flex-md-row p-4 gap-4 py-md-5 align-items-center justify-content-center">
@@ -634,7 +672,7 @@
               <li>
                 <a class="dropdown-item d-flex align-items-center gap-2 py-2">
                   <span class="d-inline-block bg-success rounded-circle p-1"></span>
-                  Regis Fees Rs. 100
+                  Reg Fees Rs. 100
                 </a>
               </li>
               <li>
@@ -648,7 +686,7 @@
         </div>
         <div class="container-fluid d-flex justify-content-center">
           <a href="/already-regis"><button type="button" class="btn btn-light mx-2">Fee Pay</button></a>
-          <button type="button" class="btn btn-light"  onclick="submitForm('24*7', '1000+100(reg)=1100')">New Reg.</button></a>
+          <button type="button" class="btn btn-light"  onclick="submitForm('24*7')">New Reg.</button></a>
         </div>
       </div>
       <div class="card-footer h1-seats neon text-center">
@@ -689,7 +727,7 @@
   </div>
 </div>
 </div>
-
+</div>
   <script>
 
 
@@ -697,7 +735,7 @@
     function submitForm(shift, amount) {
       // Store the SHIFT and AMOUNT values in LocalStorage
       localStorage.setItem('batchName', shift);
-      localStorage.setItem('amountValue', amount);
+     
   
       // Redirect to the new regis form
       window.location.href = '/new-regis'; // Change this to the correct URL of the regis form

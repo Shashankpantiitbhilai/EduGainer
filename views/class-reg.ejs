@@ -55,10 +55,11 @@
   </style>
 
 
-  <main class="form-signin h-50 w-70 m-auto">
+
+  <main class="form-signin m-auto ">
     <div class="card">
       <div class="card-body ">
-  <form action="/class-reg" method="POST" enctype="multipart/form-data">
+  <form action="/class-reg" method="POST" enctype="multipart/form-data" onsubmit="return validateForm()">
     <div class="form-group">
       <label for="name">Name:</label>
       <input type="text" id="name" name="name" required>
@@ -77,6 +78,11 @@
       </select>
     </div>
     <div class="form-group">
+      <label for="dob">Date of Birth:</label>
+      <input type="date" id="dob" name="dob" max="2007-12-31" required>
+    </div>
+
+    <div class="form-group">
         <label for="class">Class:</label>
         <input type="text" id="class" name="class" required readonly>
          
@@ -89,15 +95,14 @@
 
       <div class="form-group">
         <label for="subject">Subject:</label>
-        <select id="subject" name="subject" required>
-          <option value="Physics">Physics</option>
-          <option value="Chemistry">Chemistry</option>
-          <option value="Maths">Maths</option>
-          <option value="Economics">Economics</option>
-          <option value="Science">Science</option>
-          <option value="Biology">Biology</option>
-          <option value="Other">Other</option>
-        </select>
+        <input type="text" id="subject" name="subject" required readonly>
+         
+       
+      </div>
+      <div class="form-group">
+        <label for="date">Date:</label>
+        <input type="text" class="form-control" id="date" name="date" value= "<%= currentDate %>"required readonly>
+          
       </div>
   <div class="form-group">
         <label for="faculty">Faculty:</label>
@@ -109,11 +114,9 @@
         
      
       </div>
-    <div class="form-group">
-      <label for="dob">Date of Birth:</label>
-      <input type="date" id="dob" name="dob" max="2007-12-31" required>
-    </div>
-
+ 
+ 
+    
     <div class="form-group">
       <label for="fatherName">Father's Name:</label>
       <input type="text" id="fatherName" name="fatherName" required>
@@ -126,12 +129,12 @@
 
     <div class="form-group">
       <label for="contactNo1">Contact No. 1 (Whatsapp):</label>
-      <input type="tel" id="contactNo1" name="contactNo1" maxlength="10" pattern="\d{10}"placeholder="Enter ten digits" required>
+      <input type="tel" id="contactNo1" name="contactNo1" maxlength="10" pattern="\d{10}"placeholder="Enter Your Whatsapp No" required>
     </div>
 
     <div class="form-group">
       <label for="contactNo2">Contact No. 2:</label>
-      <input type="tel" id="contactNo2" name="contactNo2" maxlength="10" pattern="\d{10}" placeholder="Enter ten digits" >
+      <input type="tel" id="contactNo2" name="contactNo2" maxlength="10" pattern="\d{10}" placeholder="Enter Your Mobile No" >
     </div>
 
     <div class="form-group">
@@ -141,7 +144,7 @@
 
     <div class="form-group">
       <label for="aadharNo">Aadhar No.:</label>
-      <input type="text" id="aadharNo" name="aadharNo"minlength="12" maxlength="12" placeholder="Enter twelve digits" required>
+      <input type="text" id="aadharNo" name="aadharNo"minlength="12" maxlength="12" placeholder="Enter Your Aadhaar No." required>
     </div>
     <div class="form-group">
       <label for="adharCardPhoto">Adhar Card Photo:</label>
@@ -179,21 +182,37 @@
 
 </div></div></main>
 <script>
+  function validateForm() {
+    const contactNo1 = document.getElementById('contactNo1').value;
+    const contactNo2 = document.getElementById('contactNo2').value;
+  
+    if (contactNo1 === contactNo2) {
+      alert("Contact No. 2 should be different from Contact No. 1.");
+      return false; // Prevent form submission
+    }
+  
+    // If the two contact numbers are different, the form will be submitted
+    return true;
+  }
   
     document.addEventListener('DOMContentLoaded', function() {
       // Retrieve class and board information from LocalStorage
       var className = localStorage.getItem('class');
       var boardName = localStorage.getItem('board');
       var facultyName = localStorage.getItem('faculty');
+      var subjectName = localStorage.getItem('subject');
+   
   
       // Populate the class and board fields with the retrieved information
       var classField = document.getElementById('class');
       var boardField = document.getElementById('board');
       var facultyField = document.getElementById('faculty');
-      if (classField && boardField && facultyField) {
+      var subjectField = document.getElementById('subject');
+      if (classField && boardField && facultyField && subjectField) {
         classField.value = className;
         boardField.value = boardName;
         facultyField.value=facultyName;
+        subjectField.value=subjectName
       }
     });
  
@@ -220,4 +239,4 @@
     return /^(\d{4}\s?){2}\d{4}$/.test(aadharNo);
   }
 </script>
-<%- include('partials/footer') %>
+

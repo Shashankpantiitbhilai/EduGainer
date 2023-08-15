@@ -12,26 +12,11 @@
 
   <style>
     @media (max-width: 767px) {
-      .card-intro {
-        display: block;
-        margin-bottom: 20px;
-      }
-      
-      .card-intro .col-6 {
-        flex: 100%;
-        max-width: 100%;
+      .map-container {
+        /* Set a specific height for the map on mobile devices */
+        height: 250px;
       }
     }
-    @media (max-width: 767px) {
-      .card-intro {
-        display: block;
-        margin-bottom: 20px;
-      }
- 
-      .card-intro .col-6 {
-        flex: 100%;
-        max-width: 100%;
-      }
       @keyframes bounce {
         0%   { transform: scale(1,1) translateY(0); }
         10%  { transform: scale(1.1,.9) translateY(0); }
@@ -154,7 +139,7 @@
     .E, .d, .u, .G, .a, .i ,.n,.e,.r,.s{
       color: green;
       text-shadow: 0 3px yellowgreen, 0 5px yellow, 0 7px orange;
-    }}
+    }
     .card-intro {
       display: block;
       margin-bottom: 20px;
@@ -239,7 +224,7 @@ animation: bounce 1s ease infinite .1s;
 }
 
 .bouncing-text:before {
-  left:0;
+  left:2;
   animation: scale 1s linear infinite;
 }
 
@@ -398,6 +383,161 @@ animation: bounce 1s ease infinite .1s;
   left: 285px;
   animation: scale 1s linear infinite .5s;
 }
+.gradient-card {
+  /* fallback for old browsers */
+  background: #fa709a;
+
+  /* Chrome 10-25, Safari 5.1-6 */
+  background: -webkit-linear-gradient(to right,green ,yellow);
+
+  /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  background: linear-gradient(to right,green ,yellow)
+}
+.card {
+  transition: transform 0.3s ease;
+}
+
+/* Increase the size on hover */
+.card:hover {
+  transform: scale(1.05);
+}
+
+
+.edugainer{
+ 
+  
+
+  margin-left: 15%;
+  margin-right: 15%;
+ 
+  color: yellow;
+
+}
+
+.edugainer p{
+  font-family: Oswald;
+  font-size: 100px;
+   animation: Color 4s linear infinite;
+  -webkit-animation: Color 4s ease-in-out infinite;
+  color: yellow;
+
+ 
+}
+
+@keyframes Color{
+  0%{
+    color:#A0D468;
+  }
+  
+  20%{
+    color:#4FC1E9;
+  }
+  
+  40%{
+    color:#FFCE54;
+  }
+  
+  60%{
+    color:#FC6E51;
+  }
+  
+  80%{
+    color:#ED5565;
+  }
+  
+  100%{
+    color:#AC92EC;
+  }
+}
+
+@-moz-keyframes Color{
+  0%{
+    color:hsl(0, 56%, 62%);
+  }
+  
+  20%{
+    color:#824fe9;
+  }
+  
+  40%{
+    color:#FFCE54;
+  }
+  
+  60%{
+    color:#FC6E51;
+  }
+  
+  80%{
+    color:#ED5565;
+  }
+  
+  100%{
+    color:#AC92EC;
+  }
+}
+
+@-webkit-keyframes Color{
+  0%{
+    color:#5fb504;
+  }
+  
+  20%{
+    color:#008abc;
+  }
+  
+  40%{
+    color:#af7d00;
+  }
+  
+  60%{
+    color:#FC6E51;
+  }
+  
+  80%{
+    color:#cb0317;
+  }
+  
+  100%{
+    color:#AC92EC;
+  }
+}
+
+
+
+
+@media (max-width: 767px) {
+  .edugainer p{
+    font-size: 65px;
+  }}
+
+
+
+#typedtextintro {
+  font-family: 'Waiting for the Sunrise', cursive; 
+  font-size:30px; 
+  
+  letter-spacing: 6px; 
+  font-weight: bold;
+  text-align: center;
+  color: Yellow;
+} 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     </style>
 
 
@@ -406,34 +546,29 @@ animation: bounce 1s ease infinite .1s;
 
 
  
-<div class="position-relative overflow-hidden p-3 p-md-5 m-md-3 text-center bg-body-tertiary background">
+<div class="position-relative overflow-hidden p-3 p-md-5 m-md-3 text-center bg-dark background text-light">
   <div class="col-md-6 p-lg-5 mx-auto my-5">
-    <div class="bouncing-text">
-      <div class="E">E</div>
-      <div class="d">d</div>
-      <div class="u">u</div>
-      <div class="G">G</div>
-      <div class="a">a</div>
-      <div class="i">i</div>
-      <div class="n">n</div>
-      <div class="e">e</div>
-      <div class="r">r</div>
-      <div class="s">'s</div>
-      <div class="shadow"></div>
-      <div class="shadow-two"></div>
-    </div>
-    <h1 class="display-3 fw-bold">Welcome to EduGainer's</h1>
-    <h3 class="fw-normal text-muted mb-3">Our aim is to proide quality education to Entire world.
-      <p class="mt-3">We ensure that those who want to learn can learn without hinderance of money</p>
-    </h3>
+
+    <h3 class="display-3 fw-bold"> <div class="container">  
+      <div id="typedtextintro">
+  
+      </div> <div class="edugainer mx-auto mt-2">
+      <p> EduGainer's </p>
+          </div>
+</h3></div>
+<h5 > Where Learning Knows No Boundaries!</h5>
+      <p class="mt-3">
+        Discover a World of Knowledge and Unlock Your Potential with EduGainer's Comprehensive Learning Platform.</p>
+   
+    <div class="map-container">
     <iframe
-    width="450"
-    height="250"
+    width="500"
+    height="350"
     frameborder="0" style="border:0"
     referrerpolicy="no-referrer-when-downgrade"
     src="https://www.google.com/maps/embed/v1/place?key=AIzaSyDD6yqFxBiCRXZvm1ScFvoZ_4nrmgh3p9Q&q=Edugainer's Library and Classes,Uttarkashi,Uttarakhand+India"
     allowfullscreen>
-  </iframe>
+  </iframe></div>
 
   
   <div class="product-device shadow-sm d-none d-md-block"></div>
@@ -444,20 +579,21 @@ animation: bounce 1s ease infinite .1s;
 <div class=" px-4 py-5" id="custom-cards ">
 
 
-  <div class=" row  card-intro ">
-    <div class="col-md-6 mb-5 col-sm-12 ">
-      <a href="/classes"> <div class="card card-cover h-100 overflow-hidden text-bg-dark rounded-4 shadow-lg" style="background-image: url('css/educlasses.jpg');">
+  <div class=" row  mt-4">
+    <div class="col-12 col-md-6 mb-4 ">
+      <a href="/classes"> <div class="card card-cover h-100 overflow-hidden text-bg-dark rounded-4 shadow-lg gradient-card
+        "  >
         <div class="d-flex flex-column h-100 p-5 pb-3 text-white text-shadow-1 classes">
-          <h3 class=" mt-5 mb-4 display-6 lh-1 fw-bold">Edugainer's Classes</h3>
+          <h3 class=" mt-5 mb-4 display-6 lh-1 fw-bold">EduGainer's Classes</h3>
          
         </div></a>
       </div>
     </div>
 
-    <div class="col-md-6 mb-5 col-sm-12">
-      <a href="/library"> <div class="card card-cover h-100 overflow-hidden text-bg-dark rounded-4 shadow-lg" class="library" style="background-image: url('css/test.jpg'); ">
+    <div class="col-12 col-md-6 mb-4 ">
+      <a href="/library"> <div class="card card-cover h-100 overflow-hidden text-bg-dark rounded-4 shadow-lg gradient-card">
         <div class="d-flex flex-column h-100 p-5 pb-3 text-white text-shadow-1">
-          <h3 class=" mt-5 mb-4 display-6 lh-1 fw-bold">Edugainer's library</h3>
+          <h3 class=" mt-5 mb-4 display-6 lh-1 fw-bold">EduGainer's library</h3>
           <ul class="d-flex list-unstyled mt-auto">
             <li class="me-auto">
          
@@ -469,5 +605,40 @@ animation: bounce 1s ease infinite .1s;
     <a class="btn btn-dark btn-lg" href="/submit" role="button">Submit a Secret</a> -->
   </div>
 </div>
+<script>
+  var aText = new Array(
+"Welcome to"
+);
+var iSpeed = 100; // time delay of print out
+var iIndex = 0; // start printing array at this position
+var iArrLength = aText[0].length; // the length of the text array
+var iScrollAt = 20; // start scrolling up at this many lines
 
+var iTextPos = 0; // initialise text position
+var sContents = ''; // initialise contents variable
+var iRow; // initialise current row
+
+function typewriter() {
+sContents = ' ';
+iRow = Math.max(0, iIndex - iScrollAt);
+var destination = document.getElementById("typedtextintro");
+
+while (iRow < iIndex) {
+  sContents += aText[iRow++] + '<br />';
+}
+destination.innerHTML = sContents + aText[iIndex].substring(0, iTextPos) + "_";
+if (iTextPos++ == iArrLength) {
+  iTextPos = 0;
+  iIndex++;
+  if (iIndex == aText.length) {
+    iIndex = 0; // Reset to the first line to repeat the typing effect
+  }
+  iArrLength = aText[iIndex].length;
+  setTimeout("typewriter()", 1000); // Add a pause before typing the next line
+} else {
+  setTimeout("typewriter()", iSpeed);
+}
+}
+typewriter();
+</script>
 <%- include('partials/footer') %>

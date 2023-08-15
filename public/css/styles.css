@@ -40,12 +40,13 @@ body {
 .edu-image{
   border: 5px solid red;
   border-radius: 10px;
+  margin-top: 3px;
 }
 
-  .typewriter h1 {
+  .typewrite h1 {
     overflow: hidden; /* Ensures the content is not revealed until the animation *
       overflow: hidden; /* Ensures the content is not revealed until the animation */
-      border-right: .15em solid orange; /* The typwriter cursor */
+      border-right: .15em solid rgb(255, 0, 0); /* The typwriter cursor */
       white-space: nowrap; /* Keeps the content on a single line */
       margin: 0 auto; /* Gives that scrolling effect as the typing happens */
       letter-spacing: .15em; /* Adjust as needed */
@@ -63,7 +64,7 @@ body {
     /* The typewriter cursor effect */
     @keyframes blink-caret {
       from, to { border-color: transparent }
-      50% { border-color: orange; }
+      50% { border-color: rgb(255, 0, 0); }
   }
 .register{
   font-weight: 500;
@@ -74,7 +75,7 @@ body {
   color:darkorange
 }
 .heading-home{
-  color:yellow;
+  color:rgb(255, 0, 0);
 }
 .gradient-background {
   background: linear-gradient(to right,blue,purple,darkorange);
@@ -111,8 +112,8 @@ body {
   height:40
 }
 .lib-image{
-  width:70;
-  height:30em;
+  width:1000px;
+  height:600px;
 }
 .special{
   background-color: black;
@@ -136,14 +137,14 @@ body {
  
 
   /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-  background: linear-gradient(to right, rgba(899,17,2,1),rgba(599,117,2,1))
+  background: red;
 }
 .classes-gradient{
  
    
   
     /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-    background: linear-gradient(to left, rgba(103, 233, 67, 0.5), rgba(124, 56, 249, 0.5),rgba(249, 56, 56, 0.5))
+    background: linear-gradient(to right, rgb(81, 67, 233), rgba(249, 56, 56, 0.779))
   }
 .heading{
   color:darkorange
@@ -277,9 +278,38 @@ background-color: purple;
   width:130px;
   height:150px;
   border-radius: 50%;
+  border:4px solid red;
 
 }
 .educlasses{
   width:150px;
   height:150px;
+}
+/* Add custom CSS styles for the navigation bar */
+
+.div-img{
+  transition:transform .3s ease;
+}
+.div-img:hover{
+  transform:scale(1.25);
+}
+/* Style for the navigation links */
+.navbar-nav .nav-item .nav-link {
+  background-color: transparent;
+  border-radius: 5px;
+  padding: 5px 10px;
+  transition: background-color 0.3s ease, font-size 0.3s ease;
+  font-size: 16px;
+}
+
+/* Style for the navigation links on hover */
+.navbar-nav .nav-item .nav-link:hover {
+  background-color: rgb(255, 255, 255);
+  font-size: 18px; /* Increase the font size on hover */
+}
+
+/* Style for the navigation links on active page */
+.navbar-nav .nav-item .nav-link.active {
+  background-color: yellow;
+  font-size: 18px; /* Increase the font size for active link */
 }

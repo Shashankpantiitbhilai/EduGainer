@@ -121,7 +121,9 @@
       }
     
   </style>   
-  <main class="form-signin h-50 w-70 m-auto">
+ 
+  
+  <main class="form-signin m-auto ">
   <div class="card">
     <div class="card-body ">
       
@@ -136,19 +138,40 @@
   
       <div class="form-group">
         <label for="name">Name:</label>
-        <input type="text" class="form-control" id="name" name="name" required>
+        <input type="text" class="form-control" id="name" name="name"value="<%= name %>" required readonly>
       </div>
       <div class="form-group">
-        <label for="contact">Contact No:</label>
-       <input type="tel" name="contact" id="contact" maxlength="10" pattern="\d{10}"placeholder="Enter Mobile No"> 
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" value="<%= email %>" required readonly>
       </div>
   
       <div class="form-group">
         <label for="month">Month:</label>
-        <select class="form-control" id="month" name="month" required>
-          <option value="<%= monthName %>"><%= monthName %></option>
+        <select class="form-control" id="month" name="month" placeholder="Enter the month of Fee Payment" required>
+          <option value="" disabled selected hidden>Choose Month</option>
+          <option value="January">January</option>
+          <option value="February">February</option>
+          <option value="March">March</option>
+          <option value="April">April</option>
+          <option value="May">May</option>
+          <option value="June">June</option>
+          <option value="July">July</option>
+          <option value="August">August</option>
+          <option value="September">September</option>
+          <option value="October">October</option>
+          <option value="November">November</option>
+          <option value="December">December</option>
         </select>
       </div>
+      
+  
+      <div class="form-group">
+        <label for="date">Date:</label>
+        <input type="text" class="form-control" id="date" name="date" value= "<%= currentDate %>"required readonly>
+          
+      </div>
+      
+   
   
       <div class="form-group">
         <label for="batch">Batch:</label>
@@ -174,24 +197,28 @@
         <label for="paymentMethod">Payment Method:</label>
         <select class="form-control" id="paymentMethod" name="paymentMethod" required>
           <option value="UPI">UPI</option>
-          <option value="Cash">Cash</option>
+    
        
         </select>
       </div>
       <div class="form-group">
         <label for="amount">Amount:</label>
-        <input type="number"id="amount"  required readonly>
+        <input type="number"id="amount" name="amount" required readonly>
           
         </select>
       </div>
-  
+      <div class="alert alert-warning" role="alert">
+        <font color="red">Note:</font> While making payment write your Name and Reg No in  note as (inside app like <font color="blue">Phone Pe ,GPay etc</font>)
+         <p class="text-success"><b>Name:"Virat Kohli",Reg:"10C07"</b></p>
+       </div>
       <div class="form-group ">
     
-        <img src="css/qrcode.jpg" height="250px" align="center">
+        <img src="css/qrcode.jpg" height="250px">
        
          
         
       </div>
+      
       <div class="form-group">
         <label for="paymentPhoto">Payment Photo:</label>
         <input type="file" class="form-control-file selector"id="paymentPhoto" name="paymentPhoto" accept="image/*" required>
@@ -202,6 +229,10 @@
   </div></div>
 </main>
 <script>
+  
+    // Get a reference to the select element
+
+  
   document.addEventListener('DOMContentLoaded', function () {
     // Fetch the batch value from the server-side (replace 'YOUR_BATCH_VALUE' with the actual batch value)
     var batch = "<%= ClassVal %>"; // Replace 'YOUR_BATCH_VALUE' with the actual batch value coming from the server-side
@@ -233,4 +264,4 @@
 </script>
 
   
-  <%- include('partials/footer') %>
+ 

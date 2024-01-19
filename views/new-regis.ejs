@@ -55,7 +55,7 @@
   </style>
 
 
-  <main class="form-signin h-50 w-70 m-auto">
+  <main class="form-signin m-auto ">
     <div class="card">
       <div class="card-body ">
   <form action="/new-regis" method="POST" enctype="multipart/form-data">
@@ -94,14 +94,14 @@
 
     <div class="form-group">
       <label for="contactNo1">Contact No. 1 (Whatsapp):</label>
-      <input type="tel" id="contactNo1" name="contactNo1" maxlength="10" pattern="\d{10}"placeholder="Enter ten digits" required>
+      <input type="tel" id="contactNo1" name="contactNo1" maxlength="10" pattern="\d{10}"placeholder="Enter Your Whatsapp No" required>
     </div>
 
     <div class="form-group">
       <label for="contactNo2">Contact No. 2:</label>
-      <input type="tel" id="contactNo2" name="contactNo2" maxlength="10" pattern="\d{10}" placeholder="Enter ten digits" >
+      <input type="tel" id="contactNo2" name="contactNo2" maxlength="10" pattern="\d{10}" placeholder="Enter Mobile No." >
     </div>
-
+   
     <div class="form-group">
       <label for="address">Address:</label>
       <input type="text" id="address" name="address" required>
@@ -109,7 +109,7 @@
 
     <div class="form-group">
       <label for="aadharNo">Aadhar No.:</label>
-      <input type="text" id="aadharNo" name="aadharNo"minlength="12" maxlength="12" placeholder="Enter twelve digits" required>
+      <input type="text" id="aadharNo" name="aadharNo"minlength="12" maxlength="12" placeholder="Enter Your Aadhaar No." required>
     </div>
     <div class="form-group">
       <label for="adharCardPhoto">Adhar Card Photo:</label>
@@ -131,10 +131,16 @@
      
     </div>
     <div class="form-group">
-      <label for="amount">Amount:</label>
-      <input type="text"id="amount" name="amount" class="form-control" required readonly >
+      <label for="date">Date:</label>
+      <input type="text" class="form-control" id="date" name="date" value= "<%= currentDate %>"required readonly>
         
-      </select>
+    </div>
+
+    <div class="form-group">
+      <label for="amount">Amount:</label>
+      <input type="number"id="amount" name="amount" class="form-control" required readonly >
+        
+    
     </div>
 
     <div class="form-group">
@@ -146,10 +152,16 @@
       <label for="paymentMethod">Payment Method:</label>
       <select id="paymentMethod" name="paymentMethod" required>
         <option value="UPI">UPI</option>
-        <option value="Card">Card</option>
+       
        
       </select>
     </div>
+ 
+    <div class="alert alert-warning" role="alert">
+      <font color="red">Note:</font> While making payment write your Name and Reg No in  note as (inside app like <font color="blue">Phone Pe ,GPay etc</font>)
+       <p class="text-success"><b>Name:"Virat Kohli"</b></p>
+     </div>
+  
     <div class="form-group ">
     
       <img src="css/qrcode.jpg" height="250px" align="center">
@@ -168,59 +180,145 @@
 
 </div></div></main>
 <script>
-
-  window.onload = function() {
-    // Get the value from localStorage
+  // Load the shift value from local storage when the page loads
+  window.onload = function () {
     var shiftValue = localStorage.getItem('batchName');
-    
-    // Display the value 
     var shiftField = document.getElementById('shift');
-    if (shiftField) {
+    if (shiftField && shiftValue) {
       shiftField.value = shiftValue;
+      calculateAmount(shiftValue); // Call the function to calculate and display the amount
     }
-  
-    var amountVal= localStorage.getItem('amountValue');
-    
-    // Display the value 
-    var amount = document.getElementById('amount');
-    if (amount) {
-      amount.value =amountVal;
-    }}
+  };
 
+  // Add an event listener for the "change" event on the "shift" field
   document.getElementById('shift').addEventListener('change', function () {
     var selectedShift = this.value;
+    localStorage.setItem('shift', selectedShift); // Save the selected shift value to local storage
+    calculateAmount(selectedShift); // Call the function to calculate and display the amount
+  });
+
+  function calculateAmount(selectedShift) {
     var amountField = document.getElementById('amount');
+    const date = new Date();
+    const day = date.getDate();
+
     if (selectedShift === "7 AM to 2 PM") {
-      amountField.value = '500';
+      if (day >= 1 && day <= 6) {
+        amountField.value = '600';
+      } else if (day >= 7 && day <= 10) {
+        amountField.value = '550';
+      } else if (day >= 11 && day <= 15) {
+        amountField.value = '510';
+      } else if (day >= 16 && day <= 20) {
+        amountField.value = '430';
+      } else if (day >= 21 && day <= 25) {
+        amountField.value = '350';
+      } else if (day >= 26 && day <= 31) {
+        amountField.value = '270';
+      }
       amountField.readOnly = true;
-    } 
+    } else if (selectedShift === '2 PM to 9 PM') {
+      if (day >= 1 && day <= 6) {
+        amountField.value = '600';
+      } else if (day >= 7 && day <= 10) {
+        amountField.value = '550';
+      } else if (day >= 11 && day <= 15) {
+        amountField.value = '510';
+      } else if (day >= 16 && day <= 20) {
+        amountField.value = '430';
+      } else if (day >= 21 && day <= 25) {
+        amountField.value = '350';
+      } else {
+        amountField.value = '270';
+      }
+      amountField.readOnly = true;
+    } else if (selectedShift === '7 PM to 11 PM') {
+      if (day >= 1 && day <= 6) {
+        amountField.value = '400';
+      } else if (day >= 7 && day <= 10) {
+        amountField.value = '370';
+      } else if (day >= 11 && day <= 15) {
+        amountField.value = '350';
+      } else if (day >= 16 && day <= 20) {
+        amountField.value = '300';
+      } else if (day >= 21 && day <= 25) {
+        amountField.value = '250';
+      } else {
+        amountField.value = '200';
+      }
+      amountField.readOnly = true;
+      // ... (Add the calculations for other shift options here)
+    }
+   else if (selectedShift === '9 PM to 6 AM') {
+    if (day >= 1 && day <= 6) {
+      amountField.value = '600';
+    } else if (day >= 7 && day <= 10) {
+      amountField.value = '550';
+    } else if (day >= 11 && day <= 15) {
+      amountField.value = '510';
+    } else if (day >= 16 && day <= 20) {
+      amountField.value = '430';
+    } else if (day >= 21 && day <= 25) {
+      amountField.value = '350';
+    } else {
+      amountField.value = '270';
+    }
+    amountField.readOnly = true;
+    // ... (Add the calculations for other shift options here)
   
-   else if (selectedShift === '2 PM to 9 PM') {
-      amountField.value = '500';
-      amountField.readOnly = true;
-    }
-    else if (selectedShift === '7 PM to 11 PM') {
-      amountField.value = '300';
-      amountField.readOnly = true;
-    }
-    else if (selectedShift === '9 PM to 6 AM') {
-      amountField.value = '500';
-      amountField.readOnly = true;
-    }
-    else if (selectedShift === '2 PM to 11 PM') {
-      amountField.value = '700';
-      amountField.readOnly = true;
-    }
-    else  if (selectedShift === '7 AM to 7 PM') {
-      amountField.value = '800';
-      amountField.readOnly = true;
-    }
-    else  if (selectedShift === '24*7') {
-      amountField.value = '1000';
-      amountField.readOnly = true;
-    }
-    }
-  );
+} else if (selectedShift === '7 AM to 7 PM') {
+  if (day >= 1 && day <= 6) {
+    amountField.value = '900';
+  } else if (day >= 7 && day <= 10) {
+    amountField.value = '820';
+  } else if (day >= 11 && day <= 15) {
+    amountField.value = '760';
+  } else if (day >= 16 && day <= 20) {
+    amountField.value = '630';
+  } else if (day >= 21 && day <= 25) {
+    amountField.value = '500';
+  } else {
+    amountField.value = '370';
+  }
+  amountField.readOnly = true;
+  // ... (Add the calculations for other shift options here)
+} else if (selectedShift === '2 PM to 11 PM') {
+  if (day >= 1 && day <= 6) {
+    amountField.value = '800';
+  } else if (day >= 7 && day <= 10) {
+    amountField.value = '730';
+  } else if (day >= 11 && day <= 15) {
+    amountField.value = '680';
+  } else if (day >= 16 && day <= 20) {
+    amountField.value = '560';
+  } else if (day >= 21 && day <= 25) {
+    amountField.value = '450';
+  } else {
+    amountField.value = '330';
+  }
+  amountField.readOnly = true;
+  // ... (Add the calculations for other shift options here)
+}
+ else if (selectedShift === '24*7') {
+  if (day >= 1 && day <= 6) {
+    amountField.value = '1100';
+  } else if (day >= 7 && day <= 10) {
+    amountField.value = '1000';
+  } else if (day >= 11 && day <= 15) {
+    amountField.value = '920';
+  } else if (day >= 16 && day <= 20) {
+    amountField.value = '760';
+  } else if (day >= 21 && day <= 25) {
+    amountField.value = '600';
+  } else {
+    amountField.value = '440';
+  }
+  amountField.readOnly = true;
+  // ... (Add the calculations for other shift options here)
+}
+    // Add more else if conditions for other shift options as required
+}
+
   document.getElementById('aadharNo').addEventListener('input', function () {
     var aadharNo = this.value.trim();
     if (aadharNo.length === 12) {
@@ -242,4 +340,4 @@
     return /^(\d{4}\s?){2}\d{4}$/.test(aadharNo);
   }
 </script>
-<%- include('partials/footer') %>
+

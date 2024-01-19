@@ -4,7 +4,9 @@
 <head>
   
   <meta charset="utf-8">
-  <title>Login Page</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <title>EduGainer's</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville&display=swap" rel="stylesheet">
@@ -26,7 +28,7 @@
     <link href="css/styles.css" rel="stylesheet">
     <link href="css/bootstrap-social.css" rel="stylesheet">
  
-    <nav class="navbar navbar-expand-md mb-0 nav-gradient">
+    <nav class="navbar navbar-expand-md mb-0 bg-warning">
       <div class="container-fluid">
         <a class="navbar-brand" href="/intro"><img src="css/logo.png" class="logo edu-image"></a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
@@ -35,18 +37,42 @@
         <div class="collapse navbar-collapse" id="navbarCollapse">
           <ul class="navbar-nav me-auto mb-2 mb-md-0">
             <li class="nav-item">
-              <a class="nav-link active" aria-current="page" href="/classes">Classes</a>
+              <a class="nav-link " aria-current="page" href="/classes">Classes</a>
             </li>
             <li class="nav-item">
+<<<<<<< HEAD
               <a class="nav-link active" href="/library">Library</a>
             </li>
             <li class="nav-item">
               <a class="nav-link " href="/contact">Contact Us</a>
+=======
+              <a class="nav-link " href="/library">Library</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link " href="/contact">Contact Us</a>
+            </li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="aboutCompanyDropdown" role="button" data-bs-toggle="dropdown"
+                aria-expanded="false">About Us</a>
+              <ul class="dropdown-menu" aria-labelledby="aboutCompanyDropdown">
+                <li><a class="dropdown-item" href="/about">About Us</a></li>
+                <li><a class="dropdown-item" href="/organization">Company</a></li>
+              </ul>
+          </ul>
+          <ul class="navbar-nav  mb-2 mb-md-0  text-info mx-3">
+            <li class="nav-item dropdown text-info">
+              <a class="nav-link dropdown-toggle btn btn-info" href="#" id="feeDropdown" role="button" data-bs-toggle="dropdown"
+                aria-expanded="false"> <!-- Remove data-bs-hover attribute -->
+                Fee Pay
+              </a>
+              <ul class="dropdown-menu" aria-labelledby="feeDropdown">
+                <li><a class="dropdown-item" href="/already-regis">Library</a></li>
+                <li><a class="dropdown-item" href="/classes-enrolled">Classes</a></li>
+              </ul>
+>>>>>>> 88d7a50fa0c87b7bf41e06a279a4a128e2e28f4d
             </li>
           </ul>
-          <form class="d-flex" role="search">
-            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-            <button class="btn btn-outline-success" type="submit">Search</button>
+          <a href="/logout" class="btn btn-danger" role="button" >Logout</a> 
           </form>
         </div>
       </div>

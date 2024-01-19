@@ -55,42 +55,49 @@
   </style>
 
 
-  <main class="form-signin h-50 w-70 m-auto">
+  
+  <main class="form-signin m-auto ">
     <div class="card">
       <div class="card-body ">
-  <form action="/new-regis" method="POST" enctype="multipart/form-data">
+  <form action="/payment" method="POST" enctype="multipart/form-data">
     <div class="form-group">
+      <label for="reg">RegNo:</label>
+      <input type="number" id="reg" name="reg" value="<%= regis %>" readonly>
+
+    </div>
+    <div class="form-group">
+
       <label for="name">Name:</label>
-      <input type="text" id="name" name="name" required>
+      <input type="text" id="name" name="name" value="<%= name %>"  readonly>
     </div>
     <div class="form-group">
       <label for="email">Email:</label>
-      <input type="email" id="email" name="email" required>
+      <input type="email" id="email" name="email" value="<%= email %>" required>
     </div>
-    <div class="form-group">
-      <label for="month">Month:</label>
-      <select class="form-control" id="month" name="month" required>
-        <option value="Jan"><%= monthName %></option>
-      </select>
-    </div>
+ 
 
     <div class="form-group">
       <label for="shift">Shift:</label>
-      <select id="shift" name="shift" required>
-        <option value="i" selected disabled hidden>Choose your shift</option>
-        <option value="7 AM to 2 PM">7 AM to 2 PM</option>
-        <option value="2 PM to 9 PM">2 PM to 9 PM</option>
-        <option value="7 PM to 11 PM">7 PM to 11 PM</option>
-        <option value="9 PM to 6 AM">9 PM to 6 AM</option>
-        <option value="2 PM to 11 PM">2 PM to 11 PM</option>
-        <option value="7 AM to 7 PM">7 AM to 7 PM</option>
-        <option value="24*7">24*7</option>
+      <input type="text" id="shift" name="shift" value="<%= shift %>" required>
+       
         
-      </select>
+      
+    </div>
+    <div class="form-group">
+      <label for="seat">Seat:</label>
+      <input type="text" id="seat" name="seat"  required>
+       
+        
+      
+    </div>
+    <div class="form-group">
+      <label for="date">Date:</label>
+      <input type="text" class="form-control" id="date" name="date" value= "<%= currentDate %>"required readonly>
+        
     </div>
     <div class="form-group">
       <label for="amount">Amount:</label>
-      <input type="number"id="amount" name="amount" min="400" max="1100" required >
+      <input type="number"id="amount" name="amount"  required  readonly>
         
       </select>
     </div>
@@ -101,10 +108,16 @@
       <label for="paymentMethod">Payment Method:</label>
       <select id="paymentMethod" name="paymentMethod" required>
         <option value="UPI">UPI</option>
-        <option value="Card">Card</option>
+       
        
       </select>
     </div>
+    
+    <div class="alert alert-warning" role="alert">
+      <font color="red">Note:</font> While making payment write your Name and Reg No in  note as (inside app like <font color="blue">Phone Pe ,GPay etc</font>)
+       <p class="text-success"><b>Name:"Virat Kohli",Reg:"7"</b></p>
+     </div>
+  
     <div class="form-group ">
     
       <img src="css/qrcode.jpg" height="250px" align="center">
@@ -114,8 +127,8 @@
     </div>
 
     <div class="form-group">
-      <label for="uploadPaymentScreenshot">Upload Payment Screenshot:</label>
-      <input type="file" id="uploadPaymentScreenshot" class="selector"name="uploadPaymentScreenshot" accept="image/*" required>
+      <label for="paymentPhoto">Upload Payment Screenshot:</label>
+      <input type="file" id="paymentPhoto" class="selector"name="paymentPhoto" accept="image/*" required>
     </div>
 
     <button type="submit" value="Submit"class="btn btn-success">Submit</button>
@@ -123,6 +136,39 @@
 
 </div></div></main>
 <script>
+  document.addEventListener('DOMContentLoaded', function () {
+    // Fetch the batch value from the server-side (replace 'YOUR_BATCH_VALUE' with the actual batch value)
+    var shiftValue = "<%= shift %>"; // Replace 'YOUR_BATCH_VALUE' with the actual batch value coming from the server-side
+
+    // Get the amount input field
+    var amountField = document.getElementById('amount');
+
+    // Function to calculate the amount based on the batch value
+    function calculateAmount(shiftValue) {
+      switch (shiftValue) {
+        case '7 AM to 2 PM':
+          return 500;
+          case '2 PM to 9 PM':
+          return 500;
+          case '2 PM to 11 PM':
+          return 700;
+          case '7 AM to 7 PM':
+          return 800;
+          case '7 PM to 11 PM':
+          return 300;
+          case '9 PM to 6 AM':
+          return 500;
+        default:
+          return 1000; // Handle the case when batch value is unknown or not specified
+      }
+    }
+
+    // Calculate and set the amount based on the batch value
+    var calculatedAmount = calculateAmount(shiftValue);
+    amountField.value = calculatedAmount;
+    amountField.readOnly = true; // Make the amount field readonly
+  });
+
   document.getElementById('shift').addEventListener('change', function () {
     var selectedShift = this.value;
     var amountField = document.getElementById('amount');
@@ -178,4 +224,4 @@
     return /^(\d{4}\s?){2}\d{4}$/.test(aadharNo);
   }
 </script>
-<%- include('partials/footer') %>
+

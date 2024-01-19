@@ -1,27 +1,154 @@
-<%- include('partials/special') %>
-
-  <div class="px-4 py-5 my-5 text-center container">
-    <img class="d-block mx-auto mb-4 edu-image" src="css/download.png" alt="" width="180" height="190">
-    <h1 class="display-5 fw-bold text-body-emphasis">
-
-        <a href="" class="typewrite heading-home" data-period="2000" data-type='[ "Curiosity", "Dedication", "Perseverance" ]'>
-          <span class="wrap"></span>
-        </a>
-    
-    <div class="col-lg-6 mx-auto">
+<!DOCTYPE html>
+<html>
+<head>
+  
+  <style>
+    .typewriter h1 {
+      overflow: hidden; /* Ensures the content is not revealed until the animation *
+        overflow: hidden; /* Ensures the content is not revealed until the animation */
+        border-right: .15em solid orange; /* The typwriter cursor */
+        white-space: nowrap; /* Keeps the content on a single line */
+        margin: 0 auto; /* Gives that scrolling effect as the typing happens */
+        letter-spacing: .15em; /* Adjust as needed */
+        animation: 
+          typing 5s steps(40, end),
+          blink-caret 1s step-end infinite;
+      }
       
-      <div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
-      <p>  <br><a class="btn btn-lg btn-danger mx-3" href="/register" role="button">Register</a>
-    <a class="btn btn-success btn-lg mx-3" href="/login" role="button">Login</a></p>
+      /* The typing effect */
+      @keyframes typing {
+        from { width: 0 }
+        to { width: 100% }
+      }
+      
+      /* The typewriter cursor effect */
+      @keyframes blink-caret {
+        from, to { border-color: transparent }
+        50% { border-color: orange; }
+    }
+    #typedtextintro {
+      font-family: 'Waiting for the Sunrise', cursive; 
+      font-size:30px; 
+      margin: 10px 50px; 
+      letter-spacing: 6px; 
+      font-weight: bold;
+      text-align: center;
+      color: Yellow;
+    } 
+    /* ---- reset ---- */
+    body {
+      margin: 0;
+      font: normal 75% Arial, Helvetica, sans-serif;
+    }
+    /* ---- particles.js container ---- */
+    #particles-js {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      background-color:blue;
+      background-image: url("");
+      background-repeat: no-repeat;
+      background-size: cover;
+      background-position: 50% 50%;
+    }
+    /* ---- center text ---- */
+    .center-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+    .center-text {
+      font-family: 'Libre Baskerville', serif;
+      font-size: 2rem;
+    }
+    /* ---- stats.js ---- */
+    .count-particles {
+      background: #000022;
+      position: absolute;
+     
+      left: 0;
+   
+      color: #13E8E9;
+      font-size: .8em;
+      text-align: left;
+      text-indent: 4px;
+      line-height: 14px;
+      padding-bottom: 2px;
+      font-family: Helvetica, Arial, sans-serif;
+      font-weight: bold;
+    }
+    .js-count-particles {
+      font-size: 1.1em;
+    }
+    #stats,
+
+    #stats {
+      border-radius: 3px 3px 0 0;
+      overflow: hidden;
+    }
+    .count-particles {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      border-radius: 0 0 3px 3px;
+
+    }
+  </style>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  
+  <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville&display=swap" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+
+<link href="css/styles.css" rel="stylesheet">
+</head>
+<body>
+  <!-- particles.js container -->
+  <div id="particles-js"></div>
+  <!-- stats - count particles --> <div class="count-particles"> <div class="center-container"><span class="js-count-particles "> 
+
+ 
+    
+   
+  <div class="container  ">
+    <div class="col-lg-4 offset-lg-1 p-0  shadow-lg">
+      <img class="edu-image" src="css/logo.png" width="180px" >
+  </div>
+
+
+
+    <h1 class="pb-2 border-bottom features ">
+    <a href="" class="typewrite" data-period="2000"class="text-info" data-type='["Curiosity", "Dedication", "Perseverance" ]'>
+      <span class="wrap"></span>
+    </a></h1>
+      <div class="container my-5">
+        <div class="row p-4 pb-0 pe-lg-0 pt-lg-5 align-items-center rounded-3 border shadow-lg">
+          <div class="col-lg-7 p-3 p-lg-5 pt-lg-3">
+           
+           
+
+            <div class="d-grid gap-2 d-md-flex justify-content-md-start mb-4 mb-lg-3">
+              <a href="/register"><button type="button" class="btn btn-primary  " >Sign Up</button></a>
+              <a href="/login"><button type="button" class="btn btn-success " >Sign In</button></a>
+            </div>
+          </div>
+        
+        </div>
       </div>
     </div>
-  </div>
+  </div></span> </div></div>
+  <!-- Centered text container -->
+ 
   
+  <!-- particles.js lib - https://github.com/VincentGarreau/particles.js -->
+  <script src="http://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+  <!-- stats.js lib -->
+  <script src="http://threejs.org/examples/js/libs/stats.min.js"></script>
 
-    
-
-
-<script>var TxtType = function(el, toRotate, period) {
+<script>
+  var TxtType = function(el, toRotate, period) {
     this.toRotate = toRotate;
     this.el = el;
     this.loopNum = 0;
@@ -76,7 +203,67 @@ window.onload = function() {
     css.type = "text/css";
     css.innerHTML = ".typewrite > .wrap { border-right: 0.08em solid #fff}";
     document.body.appendChild(css);
-};
-</script>
+};  particlesJS("particles-js", {
+      "particles": {
+        "number": {
+          "value": 80,
+          "density": {
+            "enable": true,
+            "value_area": 800
+          }
+        },
+        "color": {
+          "value": "#ffffff"
+        },
+        "shape": {
+          "type": "circle",
+          "stroke": {
+            "width": 0,
+            "color": "#000000"
+          },
+          "polygon": {
+            "nb_sides": 5
+          },
+          "image": {
+            "src": "img/github.svg",
+            "width": 100,
+            "height": 100
+          }
+        },
+        "opacity": {
+          "value": 0.5,
+          "random": false,
+          "anim": {
+            "enable": false,
+            "speed": 1,
+            "opacity_min": 0.1,
+            "sync": false
+          }
+        },
+        "size": {
+          "value": 1, // Adjust this value to control the size of the bubbles
+          "random": true,
+          "anim": {
+            "enable": false,
+            "speed": 40,
+            "size_min": 0.1,
+            "sync": false
+          }
+        },
+        /* ... (rest of the configuration) ... */
+      },
+      /* ... (rest of the configuration) ... */
+    });
+  
+    /* ... (the rest of your JavaScript) ... */
+  </script>
+  
+  
+  
+  
+  
+  
+    
 
-
+</body>
+</html>

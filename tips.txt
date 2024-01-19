@@ -1,0 +1,8 @@
+While making payment write your name and reg no in  note 
+
+Name:"Mahendra singh dhoni",Reg:"7"//library
+
+
+While making payment write your name and reg no in  note 
+
+Name:"Mahendra singh dhoni",Reg:"10C07"//class

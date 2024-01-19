@@ -2,6 +2,184 @@
 
 <%- include('partials/classes-gradient') %>
 <style>
+  @media (max-width: 767px) {
+   
+    
+    .card-intro .col-4 {
+      flex: 50%;
+      max-width: 50%;
+      
+
+    }
+    .lib-image{
+      width:900px;
+    }
+    .card-intro .btn{
+      margin-bottom: 6px;
+   
+    }
+    .card-intro .last{
+      flex: 100%;
+      max-width: 100%;
+    }
+  
+  
+   
+      .card-intro .col-4 {
+        flex: 50%;
+        max-width: 50%;
+      }
+      .card-intro .btn {
+        margin-bottom: 6px;
+      }
+      .card-intro .last {
+        flex: 100%;
+        max-width: 100%;
+      }
+      .hidden {
+        display: none;
+      }
+      .center{
+        text-align: center;
+      }
+    }
+    .hidden {
+      display: none;
+    }
+    .center{
+      text-align: center;
+    }
+    .pink{
+      background-color: pink;
+    }
+    .green{
+      background-color: greenyellow;
+    }
+    .features{
+      color:blue;
+      font-size: xx-large;
+      font-weight: bolder;
+      font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    }
+    .typewriter h1 {
+      overflow: hidden; /* Ensures the content is not revealed until the animation *
+        overflow: hidden; /* Ensures the content is not revealed until the animation */
+        border-right: .15em solid orange; /* The typwriter cursor */
+        white-space: nowrap; /* Keeps the content on a single line */
+        margin: 0 auto; /* Gives that scrolling effect as the typing happens */
+        letter-spacing: .15em; /* Adjust as needed */
+        animation: 
+          typing 5s steps(40, end),
+          blink-caret 1s step-end infinite;
+      }
+      
+      /* The typing effect */
+      @keyframes typing {
+        from { width: 0 }
+        to { width: 100% }
+      }
+      
+      /* The typewriter cursor effect */
+      @keyframes blink-caret {
+        from, to { border-color: transparent }
+        50% { border-color: orange; }
+    }
+    .glow {
+      font-size: 30px;
+      color:wheat;
+      text-align: center;
+      animation: glow 1s ease-in-out infinite alternate;
+    }
+    
+    @-webkit-keyframes glow {
+      from {
+        text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #00e632, 0 0 40px #5100e6, 0 0 50px #e60073, 0 0 60px #e65400, 0 0 70px #e60073;
+      }
+      
+      to {
+        text-shadow: 0 0 20px #fff, 0 0 30px #ff4da6, 0 0 30px #00e632, 0 0 40px #5100e6, 0 0 50px #e60073, 0 0 60px #e65400, 0 0 70px #e60073;
+      }
+    }
+   
+
+  .neon {
+      position: relative;
+      overflow: hidden;
+      filter: brightness(100%);
+  }
+  
+  .text {
+      background-color: black;
+      color: white;
+      font-size: 15px;
+   font-weight: 500;
+      font-family: sans-serif;
+      text-transform: uppercase;
+      position: relative;
+      user-select: none;
+  }
+  
+  .text::before {
+      content: attr(data-text);
+      position: absolute;
+      color: white;
+      filter: blur(0.02em);
+      mix-blend-mode: difference;
+  }
+  
+  .gradient {
+      position: absolute;
+      background: linear-gradient(45deg, red, gold, lightgreen, gold, red);
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      mix-blend-mode: multiply;
+  }
+  
+  .spotlight {
+      position: absolute;
+      top: -100%;
+      left: -100%;
+      right: 0;
+      bottom: 0;
+      background: 
+          radial-gradient(
+              circle,
+              white,
+              transparent 25%
+          ) center / 25% 25%,
+          radial-gradient(
+              circle,
+              white,
+            
+          ) center / 12.5% 12.5%;
+      animation: light 5s linear infinite;
+      mix-blend-mode: color-dodge;
+  }
+  
+  @keyframes light {
+      to {
+          transform: translate(50%, 50%);
+      }
+  }
+  .amountalert{
+    text-align:center;
+  }
+  @media (max-width: 767px) {
+    .carousel-inner .lib-image {
+      width: 100%;
+    }
+  }
+  #typedtextintro {
+    font-family: 'Waiting for the Sunrise', cursive; 
+    font-size:30px; 
+    margin: 10px 50px; 
+    letter-spacing: 6px; 
+    font-weight: bold;
+    text-align: center;
+    color: Yellow;
+  }  
   #typedtext {
     font-family: 'Waiting for the Sunrise', cursive; 
     font-size:30px; 
@@ -11,51 +189,155 @@
     text-align: center;
     color: Yellow;
   }  
+
+  
+  .wrap {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .button {
+    min-width: 300px;
+    min-height: 60px;
+ font-family: ui-monospace;
+    font-size: 22px;
+    text-transform: uppercase;
+    letter-spacing: 1.3px;
+    font-weight: 700;
+    color: #313133;
+    background: #4FD1C5;
+  background: linear-gradient(90deg, rgba(129,230,217,1) 0%, rgba(79,209,197,1) 100%);
+    border: none;
+    border-radius: 1000px;
+    box-shadow: 12px 12px 24px rgba(79,209,197,.64);
+    transition: all 0.3s ease-in-out 0s;
+    cursor: pointer;
+    outline: none;
+    position: relative;
+    padding: 10px;
+    }
+  
+  button::before {
+  content: '';
+    border-radius: 1000px;
+    min-width: calc(300px + 12px);
+    min-height: calc(60px + 12px);
+    border: 6px solid #00FFCB;
+    box-shadow: 0 0 60px rgba(0,255,203,.64);
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    opacity: 0;
+    transition: all .3s ease-in-out 0s;
+  }
+  
+  .button:hover, .button:focus {
+    color:red;
+    transform: translateY(-6px);
+  }
+  
+  button:hover::before, button:focus::before {
+    opacity: 1;
+  }
+  
+  button::after {
+    content: '';
+    width: 30px; height: 30px;
+    border-radius: 100%;
+    border: 6px solid #00FFCB;
+    position: absolute;
+    z-index: -1;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    animation: ring 1.5s infinite;
+  }
+  
+  button:hover::after, button:focus::after {
+    animation: none;
+    display: none;
+  }
+  
+  @keyframes ring {
+    0% {
+      width: 30px;
+      height: 30px;
+      opacity: 1;
+    }
+    100% {
+      width: 300px;
+      height: 300px;
+      opacity: 0;
+    }
+  }
 </style>
+
+<div class="px-4 pt-5 my-5 text-center border-bottom bg-dark special mt-0">
+
+    
+<h1 class="display-5 fw-bold heading lh-1 mb-3 mx-auto justify-contents-center text-success">EduGainer's Classes</h1>
+
+  <p class="lead text-light">Embark on a journey of knowledge with EduGainer's Classes, where we nurture young minds to reach new heights of success.
+
+
+    <div class="d-grid gap-2 d-md-flex justify-content-md-start">
+   
+  </div>
+  <div class="overflow-hidden">
+
+    <div class="container px-0 px-md-5"> <!-- Set px-0 for full-width on mobile devices -->
+  
+      <div id="carouselExampleAutoplaying" class="carousel slide" data-bs-ride="carousel" data-bs-interval="3000">
+        <div class="carousel-inner">
+  
+          <div class="carousel-item active">
+            <img src="css/slider1.jpg" class="lib-image d-block w-100" alt="Library images"> <!-- Use d-block and w-100 for full-width on mobile devices -->
+          </div>
+  
+          <div class="carousel-item">
+            <img src="css/slider2.jpg" class="lib-image d-block w-100" alt="Library images"> <!-- Use d-block and w-100 for full-width on mobile devices -->
+          </div>
+  
+          <div class="carousel-item">
+            <img src="css/slider3.jpg" class="lib-image d-block w-100" alt="Library images"> <!-- Use d-block and w-100 for full-width on mobile devices -->
+          </div>
+  
+          <div class="carousel-item">
+            <img src="css/lib2.jpg" class="lib-image d-block w-100" alt="Library images"> <!-- Use d-block and w-100 for full-width on mobile devices -->
+          </div>
+  
+        </div>
+    
+      <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide="prev" >
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+      </button>
+      <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide="next" >
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+      </button>
+    </div>
+  </div>
+</div>
+</div></div>
 <div id="typedtext">
   
 </div>
+  
+
+<p class="lead text-light mb-3">Unlock the doors to excellence with EduGainer's Classes - Where learning is a joyful experience, and dreams turn into reality</p>
 
 
-<div class="row flex-lg-row-reverse align-items-center g-5 py-5">
-    <div class="col-12 col-sm-8 col-lg-6">
-      <div class="overflow-hidden">
-        <div class="container px-5">
-          <div id="carouselExampleAutoplaying" class="carousel slide" data-bs-ride="carousel"  data-bs-interval="2000">
-            <div class="carousel-inner">
-              <div class="carousel-item active">
-                <img src="css/image1.jpg" class="lib-image" alt="...">
-              </div>
-              <div class="carousel-item">
-                <img src="css/image2.jpg" class="lib-image" alt="...">
-              </div>
-              <div class="carousel-item">
-                <img src="css/image3.jpg" class="lib-image" alt="...">
-              </div>
-            </div>
-            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide="prev">
-              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-              <span class="visually-hidden">Previous</span>
-            </button>
-            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide="next">
-              <span class="carousel-control-next-icon" aria-hidden="true"></span>
-              <span class="visually-hidden">Next</span>
-            </button>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="col-lg-6 bg-">
-      <h1 class="display-5 fw-bold heading lh-1 mb-3 mx-auto justify-contents-center">EduGainer's Classes</h1>
-      <p class="lead">Welcome to Edugainer's Classes .We are the Best coaching Centre in Uttarkashi with very talented faculty . Our Student have reached several milestones and are continuing their journey of doing good for the society</p>
-      <p class="lead">We don't think that education should be limited to only those who can afford it but should be universal and that is our main goal!!</p> <div class="d-grid gap-2 d-md-flex justify-content-md-start">
-       
-      </div>
-
-
-
-
-
+<div class="d-flex justify-content-center">
+  <div class="wrap">
+   <a href="/Batches" target="blank"><button  type="button"class="btn  button btn-lg w-100" ><p class="text-danger"><b>Batches</b></p></button></a></small></span>
+ 
+  </div>
+ 
+</div>
 
 
 
@@ -65,7 +347,7 @@
 
 
 
-<div class="container">
+<div class="container mt-5">
   <div class="row">
     <div class="col-sm-4 col-md-6 col-lg-4 mb-3">
   
@@ -96,14 +378,11 @@
 </div>
 </div>
 
-<div class="d-flex justify-content-center">
-      
-      <a href="/Batches" target="blank"><button  type="button" class="btn btn-danger mx-auto ">Batches</button></a>
-    </div>
+
   </div></div>
   <script>
     var aText = new Array(
-"A lucid track for learners"
+"A lucid track for Education Gainers"
 );
 var iSpeed = 100; // time delay of print out
 var iIndex = 0; // start printing array at this position

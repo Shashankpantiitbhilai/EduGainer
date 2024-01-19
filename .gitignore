@@ -1,11 +1,5 @@
-<<<<<<< HEAD
 node_modules
 env
 edug-392311-1d99194c70de.json
 public/css
-=======
-.env
-edug-392311-1d99194c70de.json
-node_modules
-public
->>>>>>> 88d7a50fa0c87b7bf41e06a279a4a128e2e28f4d
+

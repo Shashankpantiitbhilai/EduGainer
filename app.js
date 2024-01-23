@@ -39,7 +39,6 @@ const uploadToGoogleDrive = require('./googledrive');
 
 
 
-<<<<<<< HEAD
 const storage = multer.memoryStorage({
   destination: function (req, file, cb) {
     return cb(null, "uploads");
@@ -53,8 +52,8 @@ const storage = multer.memoryStorage({
 const upload = multer({ storage })
 
 const Questions = [];
-=======
->>>>>>> 88d7a50fa0c87b7bf41e06a279a4a128e2e28f4d
+
+
 
 
 
@@ -87,7 +86,7 @@ const upload = multer({
   },
 });
 
-<<<<<<< HEAD
+
 
 
 // View Engine Setup
@@ -96,7 +95,7 @@ app.set("view engine", "ejs")
 app.set("views", path.resolve("./views"))
 app.use(express.json())
 app.use(express.urlencoded({ extended: false }));
-=======
+
 // View Engine Setup
 
 app.set("view engine","ejs")
@@ -104,7 +103,7 @@ app.set("views",path.resolve("./views"))
 
   app.use(express.json({limit: "20mb", extended: true}))
 app.use(express.urlencoded({limit: "20mb", extended: true, parameterLimit: 50000}))
->>>>>>> 88d7a50fa0c87b7bf41e06a279a4a128e2e28f4d
+
 
 const SerpApi = require("google-search-results-nodejs");
 const { builtinModules } = require("module");
@@ -134,13 +133,13 @@ app.use(passport.session());
 mongoose.connect("mongodb+srv://shashankpant94115:GRH5bml8Foua6trK@cluster1.ctxv50a.mongodb.net/userDB", { useNewUrlParser: true, useUnifiedTopology: true })
   .then(() => {
     console.log('Connected successfully to the MongoDB server')
-<<<<<<< HEAD
+
   });
-=======
+
     
     // Schedule the task to run once a day (adjust the interval as needed)
 setInterval(deleteInactiveUsersFromRegistration, 24 * 60 * 60 * 1000);}) // Run every 24 hours);
->>>>>>> 88d7a50fa0c87b7bf41e06a279a4a128e2e28f4d
+
 //creating a schema for our collection
 
 const userSchema = new mongoose.Schema({
@@ -150,7 +149,7 @@ const userSchema = new mongoose.Schema({
   googleId: String,
 
 })
-<<<<<<< HEAD
+
 const studRegisDetailSchema = new mongoose.Schema({
   Name: String,
   Gender: String,
@@ -193,7 +192,7 @@ const studRegisDetailSchema = new mongoose.Schema({
   Seat: Number,
   Amount: String,
   Reg: String
-=======
+
 const studRegisDetailSchema=new mongoose.Schema({
   Name:String,
   Gender:String,
@@ -220,7 +219,7 @@ Seat:String,
 Amount:Number,
 Reg:Number,
 Status:String
->>>>>>> 88d7a50fa0c87b7bf41e06a279a4a128e2e28f4d
+
 })
 
 //reading from google sheets
@@ -228,7 +227,7 @@ const d = new Date();
 const month = ['Jan', 'Feb', 'March', 'April', 'May', 'June', 'July', 'Aug', 'Sept', 'Oct', 'Nov', 'Dec'];
 let Mon = month[d.getMonth()];
 //jan
-<<<<<<< HEAD
+
 const JanSchema = new mongoose.Schema({
   RegNO: String,
   Name: String,
@@ -254,7 +253,7 @@ const JanSchema = new mongoose.Schema({
   }
 
 
-=======
+
 const JanSchema=new mongoose.Schema({
   Reg:Number,
   Name:String,
@@ -266,11 +265,11 @@ const JanSchema=new mongoose.Schema({
   PaymentMethod:String,
   Amount:Number,
   PaymentPhoto: String
->>>>>>> 88d7a50fa0c87b7bf41e06a279a4a128e2e28f4d
+
 
 })
 //feb
-<<<<<<< HEAD
+
 const FebSchema = new mongoose.Schema({
   RegNO: String,
   Name: String,
@@ -296,7 +295,7 @@ const FebSchema = new mongoose.Schema({
   }
 
 
-=======
+
 const FebSchema=new mongoose.Schema({
   Reg:Number,
   Name:String,
@@ -307,10 +306,10 @@ const FebSchema=new mongoose.Schema({
   PaymentMethod:String,
   Amount:Number,
   PaymentPhoto: String
->>>>>>> 88d7a50fa0c87b7bf41e06a279a4a128e2e28f4d
+
 
 })
-<<<<<<< HEAD
+
 const MarchSchema = new mongoose.Schema({
   RegNO: String,
   Name: String,
@@ -336,7 +335,7 @@ const MarchSchema = new mongoose.Schema({
   }
 
 
-=======
+
 const MarchSchema=new mongoose.Schema({
   Reg:Number,
   Name:String,
@@ -347,10 +346,10 @@ const MarchSchema=new mongoose.Schema({
   PaymentMethod:String,
   Amount:Number,
   PaymentPhoto: String
->>>>>>> 88d7a50fa0c87b7bf41e06a279a4a128e2e28f4d
+
 
 })
-<<<<<<< HEAD
+
 const AprilSchema = new mongoose.Schema({
   RegNO: String,
   Name: String,
@@ -402,7 +401,7 @@ const MaySchema = new mongoose.Schema({
 
 
 
-=======
+
 const AprilSchema=new mongoose.Schema({
   Reg:Number,
   Name:String,
@@ -429,10 +428,10 @@ const MaySchema=new mongoose.Schema({
   PaymentPhoto: String
  
   
->>>>>>> 88d7a50fa0c87b7bf41e06a279a4a128e2e28f4d
+
 })
 
-<<<<<<< HEAD
+
 
 const JuneSchema = new mongoose.Schema({
   RegNO: String,
@@ -459,7 +458,7 @@ const JuneSchema = new mongoose.Schema({
   }
 
 
-=======
+
 const JuneSchema=new mongoose.Schema({
   Reg:Number,
   Name:String,
@@ -470,10 +469,10 @@ const JuneSchema=new mongoose.Schema({
   PaymentMethod:String,
   Amount:Number,
   PaymentPhoto:String
->>>>>>> 88d7a50fa0c87b7bf41e06a279a4a128e2e28f4d
+
 
 })
-<<<<<<< HEAD
+
 const JulySchema = new mongoose.Schema({
   RegNO: String,
   Name: String,
@@ -499,7 +498,7 @@ const JulySchema = new mongoose.Schema({
   }
 
 
-=======
+
 const JulySchema=new mongoose.Schema({
   Reg:Number,
   Name:String,
@@ -510,10 +509,10 @@ const JulySchema=new mongoose.Schema({
   PaymentMethod:String,
   Amount:Number,
 PaymentPhoto:String,
->>>>>>> 88d7a50fa0c87b7bf41e06a279a4a128e2e28f4d
+
 
 })
-<<<<<<< HEAD
+
 const AugustSchema = new mongoose.Schema({
   RegNO: String,
   Name: String,
@@ -539,7 +538,7 @@ const AugustSchema = new mongoose.Schema({
   }
 
 
-=======
+
 const AugustSchema=new mongoose.Schema({
   Reg:Number,
   Name:String,
@@ -550,10 +549,10 @@ const AugustSchema=new mongoose.Schema({
   PaymentMethod:String,
   Amount:Number,
 PaymentPhoto:String,
->>>>>>> 88d7a50fa0c87b7bf41e06a279a4a128e2e28f4d
+
 
 })
-<<<<<<< HEAD
+
 const SeptSchema = new mongoose.Schema({
   RegNO: String,
   Name: String,
@@ -579,7 +578,7 @@ const SeptSchema = new mongoose.Schema({
   }
 
 
-=======
+
 const SeptSchema=new mongoose.Schema({
   Reg:Number,
   Name:String,
@@ -590,10 +589,10 @@ const SeptSchema=new mongoose.Schema({
   PaymentMethod:String,
   Amount:Number,
 PaymentPhoto:String,
->>>>>>> 88d7a50fa0c87b7bf41e06a279a4a128e2e28f4d
+
 
 })
-<<<<<<< HEAD
+
 const OctSchema = new mongoose.Schema({
   RegNO: String,
   Name: String,
@@ -619,7 +618,7 @@ const OctSchema = new mongoose.Schema({
   }
 
 
-=======
+
 const OctSchema=new mongoose.Schema({
   Reg:Number,
   Name:String,
@@ -630,10 +629,10 @@ const OctSchema=new mongoose.Schema({
   PaymentMethod:String,
   Amount:Number,
 PaymentPhoto:String,
->>>>>>> 88d7a50fa0c87b7bf41e06a279a4a128e2e28f4d
+
 
 })
-<<<<<<< HEAD
+
 const NovSchema = new mongoose.Schema({
   RegNO: String,
   Name: String,
@@ -659,7 +658,7 @@ const NovSchema = new mongoose.Schema({
   }
 
 
-=======
+
 const NovSchema=new mongoose.Schema({
   Reg:Number,
   Name:String,
@@ -670,10 +669,10 @@ const NovSchema=new mongoose.Schema({
   PaymentMethod:String,
   Amount:Number,
 PaymentPhoto:String,
->>>>>>> 88d7a50fa0c87b7bf41e06a279a4a128e2e28f4d
+
 
 })
-<<<<<<< HEAD
+
 const DecSchema = new mongoose.Schema({
   RegNO: String,
   Name: String,
@@ -699,7 +698,7 @@ const DecSchema = new mongoose.Schema({
   }
 
 
-=======
+
 const DecSchema=new mongoose.Schema({
   Reg:Number,
   Name:String,
@@ -710,11 +709,11 @@ const DecSchema=new mongoose.Schema({
   PaymentMethod:String,
   Amount:Number,
 PaymentPhoto:String,
->>>>>>> 88d7a50fa0c87b7bf41e06a279a4a128e2e28f4d
+
 
 })
 
-<<<<<<< HEAD
+
 const classStudFee = new mongoose.Schema({
   Reg: String,
   Name: String,
@@ -730,7 +729,7 @@ const classStudFee = new mongoose.Schema({
     contentType: String
   }
 
-=======
+
 const classStudFee=new mongoose.Schema({
   Reg:String,
   Name:String,
@@ -743,7 +742,7 @@ Email:String,
   PaymentMethod:String,
   Amount:Number,
 PaymentPhoto:String,
->>>>>>> 88d7a50fa0c87b7bf41e06a279a4a128e2e28f4d
+
 
 
 })
@@ -756,21 +755,21 @@ const classRegisStud = new mongoose.Schema({
   Board: String,
   Faculty: String,
   School: String,
-<<<<<<< HEAD
+
   email: String,
   DOB: Date,
-=======
+
   Email: String,
   Date:String,
   DOB: String,
->>>>>>> 88d7a50fa0c87b7bf41e06a279a4a128e2e28f4d
+
   FatherName: String,
   MotherName: String,
   ContactNo1: Number,
   ContactNo2: Number,
   Address: String,
   AadharNo: Number,
-<<<<<<< HEAD
+
   AdharCardPhoto: {
     data: Buffer,
     contentType: String
@@ -788,7 +787,7 @@ const classRegisStud = new mongoose.Schema({
 
 })
 
-=======
+
   AdharCardPhoto: String, // Store the Google Drive link
   
   PrepareForExam: String,
@@ -799,7 +798,7 @@ const classRegisStud = new mongoose.Schema({
 
  
   
->>>>>>> 88d7a50fa0c87b7bf41e06a279a4a128e2e28f4d
+
 
 
 
@@ -905,7 +904,7 @@ passport.use(new FacebookStrategy({
   }
 ));
 
-<<<<<<< HEAD
+
 app.get("/", function (req, res) {
   cron.schedule('* * * * *', () => {
     var transporter = nodemailer.createTransport({
@@ -943,7 +942,7 @@ app.get("/", function (req, res) {
       timezone: "Asia/Kolkata"
     });
   res.render("home");
-=======
+
 // Middleware to prevent cached pages after logout
 app.use((req, res, next) => {
   if (!req.isAuthenticated()) {
@@ -1037,7 +1036,7 @@ app.get("/",function(req,res)
   timezone: "Asia/Kolkata"
 });
     res.render("home");
->>>>>>> 88d7a50fa0c87b7bf41e06a279a4a128e2e28f4d
+
 })
 app.get("/auth/google",
 
@@ -1071,7 +1070,7 @@ app.get("/register", function (req, res) {
   const error = "";
   res.render("register", { errorMessage: error });
 })
-<<<<<<< HEAD
+
 app.get("/faq", function (req, res) {
   res.render("faq", { QuestionsArray: Questions });
 })
@@ -1079,7 +1078,7 @@ app.get("/classes-enrolled", function (req, res) {
   const reg = "";
   const error = "";
   res.render("classes-enrolled", { errorMessage: error, regis: reg });
-=======
+
 // app.get("/faq",function(req,res)
 // {
 //   res.render("faq",{QuestionsArray:Questions});
@@ -1099,7 +1098,7 @@ else{
 app.get("/error",function(req,res)
 {
   res.render("error");
->>>>>>> 88d7a50fa0c87b7bf41e06a279a4a128e2e28f4d
+
 })
 app.get("/intro", function (req, res) {
   // {const dataId = "0x3908ed08d3bdd33f:0xc82a9e75e23749e4";
@@ -1137,9 +1136,9 @@ app.get("/intro", function (req, res) {
   // getResults().then((result) => 
   res.render("intro")
 
-<<<<<<< HEAD
 
-=======
+
+
 // //found document collection
 // getResults().then((result) => 
 if(req.isAuthenticated())
@@ -1151,13 +1150,13 @@ else{
 
 }
     
->>>>>>> 88d7a50fa0c87b7bf41e06a279a4a128e2e28f4d
+
 })
 
 
 
 
-<<<<<<< HEAD
+
 
 app.get("/library", function (req, res) {
   // Use the Mongoose aggregate method to group and count documents by the "Shift" field
@@ -1169,7 +1168,7 @@ app.get("/library", function (req, res) {
       }
     }
   ])
-=======
+
   app.get("/library", function(req, res) {
     if(req.isAuthenticated())
 {
@@ -1188,7 +1187,7 @@ app.get("/library", function (req, res) {
         }
       }
     ])
->>>>>>> 88d7a50fa0c87b7bf41e06a279a4a128e2e28f4d
+
     .then((result) => {
       // result is an array containing objects like { _id: "Shift value", count: number_of_documents }
       // We'll convert the array to an object for easy access
@@ -1197,7 +1196,7 @@ app.get("/library", function (req, res) {
         seatsAvailable[shift] = 0;
       });
       result.forEach((item) => {
-<<<<<<< HEAD
+
 
         if (item.count != 0) {
           seatsAvailable[item._id] = item.count;
@@ -1223,7 +1222,7 @@ app.get("/Shift", function (req, res) {
 
 app.get("/already-regis", function (req, res) {
   res.render("already-regis", { errorMessage: "" });
-=======
+
         if (item.count != 0) {
           seatsAvailable[item._id] = item.count;
         } else {
@@ -1262,11 +1261,11 @@ app.get("/already-regis",function(req,res)
     
     }
 
->>>>>>> 88d7a50fa0c87b7bf41e06a279a4a128e2e28f4d
+
 })
 app.get("/new-regis", function (req, res) {
 
-<<<<<<< HEAD
+
   //found document collection
   res.render("new-regis");
 
@@ -1304,7 +1303,7 @@ app.get("/class-fee", function (req, res) {
   const reg = "";
   res.render("class-fee", { monthName: mon, regis: reg });
   const Teachers = ["ATP_Sir", "AmanDev_Sir", "ShekherPant_Sir", "Amit_Sir", "Akansha_Mam"];
-=======
+
 //found document collection
 if(req.isAuthenticated())
 {
@@ -1394,7 +1393,7 @@ const reg="";
     else{
       res.render("error",{authenticate:"You are not Authenticated to access this page"})
     }
->>>>>>> 88d7a50fa0c87b7bf41e06a279a4a128e2e28f4d
+
 
 })
 app.get("/about",function(req,res)
@@ -1405,7 +1404,7 @@ app.get("/about",function(req,res)
   }
 })
 
-<<<<<<< HEAD
+
 app.get("/appreciate", function (req, res) {
   //found document collection
   res.render("appreciate");
@@ -1414,7 +1413,7 @@ app.get("/contact", function (req, res) {
   //found document collection
 
   res.render("contact");
-=======
+
 app.get("/appreciate",function(req,res)
 {if(req.isAuthenticated()){
 //found document collection
@@ -1431,7 +1430,7 @@ res.render("contact");}
 else{
   res.render("error",{authenticate:"You are not Authenticated to access this page"})
 }
->>>>>>> 88d7a50fa0c87b7bf41e06a279a4a128e2e28f4d
+
 }
 )
 
@@ -1439,17 +1438,17 @@ app.get("/checkAuthStatus", function (req, res) {
   res.json({ isAuthenticated: req.isAuthenticated() });
 });
 
-<<<<<<< HEAD
+
 app.get("/class-regis", function (req, res) {
   res.render("class-regis");
-=======
+
 app.get("/class-regis",function(req,res)
 {if(req.isAuthenticated()){
   res.render("class-regis",{currentDate:formattedDate});}
   else{
     res.render("error",{authenticate:"You are not Authenticated to access this page"})
   }
->>>>>>> 88d7a50fa0c87b7bf41e06a279a4a128e2e28f4d
+
 })
 
 
@@ -1462,13 +1461,13 @@ app.post("/already-regis", function (req, res) {
       console.log(regNO);
       if (result.Reg == regNO) {
 
-<<<<<<< HEAD
+
         res.redirect("/payment");
 
-=======
+
         res.render("payment",{currentDate:formattedDate,regis:result.Reg,name:result.Name,shift:result.Shift,email:result.Email},);
         
->>>>>>> 88d7a50fa0c87b7bf41e06a279a4a128e2e28f4d
+
       } else {
         const error = "You are not registered"
         res.render("already-regis", { errorMessage: "You Are not Registered Yet!!" }); // Render a "not-found" view if the document is not found
@@ -1482,7 +1481,7 @@ app.post("/already-regis", function (req, res) {
 });
 
 
-<<<<<<< HEAD
+
 //   app.get("/logout",function(req,res)
 // {req.logout(function(err)//it log ut user from our website only and not from google or any third party website,for that we will nedd a soecial button that lead  them to that logout route 
 // //but it will logout from entire third party services like google maps gmail etc
@@ -1491,7 +1490,7 @@ app.post("/already-regis", function (req, res) {
 //     res.redirect('/');
 //   });
 
-=======
+
   app.get("/logout",function(req,res)
 {
   
@@ -1503,7 +1502,7 @@ app.post("/already-regis", function (req, res) {
     res.redirect('/');
   })});
   
->>>>>>> 88d7a50fa0c87b7bf41e06a279a4a128e2e28f4d
+
 // });
 
 // app.get("/submit",function(req,res)
@@ -1618,7 +1617,7 @@ app.post("/new-regis", upload.fields([
   { name: 'adharCardPhoto' },
   { name: 'photo' },
   { name: 'uploadPaymentScreenshot' }
-<<<<<<< HEAD
+
 ]), function (req, res, next) {
 
 
@@ -1633,7 +1632,7 @@ app.post("/new-regis", upload.fields([
 
     Name: req.body.name,
     email: req.body.email,
-=======
+
 ]) ,async function (req, res, next) {
   try{
    console.log(req.files)
@@ -1663,7 +1662,7 @@ app.post("/new-regis", upload.fields([
     Name: req.body.name,
     Seat:req.body.seat,
     Email: req.body.email,
->>>>>>> 88d7a50fa0c87b7bf41e06a279a4a128e2e28f4d
+
     Gender: req.body.gender,
     DOB: req.body.dob,
     Date:req.body.date,
@@ -1677,7 +1676,7 @@ app.post("/new-regis", upload.fields([
     PrepareForExam: req.body.prepareForExam,
     Shift: req.body.shift,
     Amount: req.body.amount,
-<<<<<<< HEAD
+
     Photo: {
       data: req.files.photo[0].buffer,
       contentType: req.files.photo[0].mimetype
@@ -1688,7 +1687,7 @@ app.post("/new-regis", upload.fields([
       contentType: req.files.uploadPaymentScreenshot[0].mimetype
     },
 
-=======
+
     
     Photo:  photoLink.webContentLink,
     
@@ -1697,7 +1696,7 @@ app.post("/new-regis", upload.fields([
     PaymentMethod: req.body.paymentMethod,
     UploadPaymentScreenshot: paymentPhotoLink.webContentLink,
     Status:"Active"
->>>>>>> 88d7a50fa0c87b7bf41e06a279a4a128e2e28f4d
+
   });
   // const data = fs.readFileSync(req.files.photo[0].path)
 
@@ -1705,14 +1704,14 @@ app.post("/new-regis", upload.fields([
   //   image: data.toString('base64')
   // })
 
-<<<<<<< HEAD
+
 
   stud.save()
     .then((result) => {
 
 
 
-=======
+
   
 await newStudent.save()
 const d = new Date();
@@ -1788,7 +1787,7 @@ const currentMonth = month[d.getMonth()];
   studFee.save()
  } )
      
->>>>>>> 88d7a50fa0c87b7bf41e06a279a4a128e2e28f4d
+
 
       var transporter = nodemailer.createTransport({
         service: 'gmail',
@@ -1834,7 +1833,7 @@ const currentMonth = month[d.getMonth()];
 
           // Pass the image source along with other information to another page
           const profilePhotoWithImageSrc = { ...info, src: imageSrc };
-<<<<<<< HEAD
+
           res.render("thanku", {
             profilePhoto: profilePhotoWithImageSrc,
             Name: name, Batch: Shift, Address: address, Contact: contact
@@ -1867,7 +1866,7 @@ app.post("/already-regis", function (req, res) {
 app.post("/payment", upload.single("paymentPhoto"), (req, res) => {
   console.log(req.body);
   console.log(req.file);
-=======
+
           res.render("thanku", { profilePhoto: profilePhotoWithImageSrc,
             Name:name,Batch:Shift,Address:address,Contact:contact });
         }})}
@@ -1888,7 +1887,7 @@ app.post("/payment", upload.single("paymentPhoto"), (req, res) => {
 app.post("/payment", upload.single("paymentPhoto") , function (req, res, next) {
   // Upload the images to Google Drive
  
->>>>>>> 88d7a50fa0c87b7bf41e06a279a4a128e2e28f4d
+
   const d = new Date();
   const month = ['Jan', 'Feb', 'March', 'April', 'May', 'June', 'July', 'Aug', 'Sept', 'Oct', 'Nov', 'Dec'];
   const currentMonth = month[d.getMonth()];
@@ -1938,13 +1937,13 @@ app.post("/payment", upload.single("paymentPhoto") , function (req, res, next) {
       res.redirect("/error");
       return;
   }
-<<<<<<< HEAD
+
   const studFee = new StudFeeClass({
     Reg: req.body.regNO,
     Name: req.body.name,
     email: req.body.email,
     Month: req.body.month,
-=======
+
   
 
 
@@ -1957,29 +1956,29 @@ app.post("/payment", upload.single("paymentPhoto") , function (req, res, next) {
     Name: req.body.name,
     Email:req.body.email,
     
->>>>>>> 88d7a50fa0c87b7bf41e06a279a4a128e2e28f4d
+
     Shift: req.body.shift,
     Seat: req.body.seat,
     Date:req.body.date,
     PaymentMethod: req.body.paymentMethod,
-<<<<<<< HEAD
+
     PaymentPhoto: {
       data: req.file.buffer,
 
       contentType: req.file.mimetype
     }
 
-=======
+
     Amount:req.body.amount,
     PaymentPhoto: paymentPhotoLink.webContentLink
->>>>>>> 88d7a50fa0c87b7bf41e06a279a4a128e2e28f4d
+
 
   });
 
   studFee.save()
-<<<<<<< HEAD
+
     .then((result) => {
-=======
+
   .then((result) => {
     
     var transporter = nodemailer.createTransport({
@@ -2018,7 +2017,7 @@ app.post("/payment", upload.single("paymentPhoto") , function (req, res, next) {
     })
    
    
->>>>>>> 88d7a50fa0c87b7bf41e06a279a4a128e2e28f4d
+
 
       var transporter = nodemailer.createTransport({
         service: 'gmail',
@@ -2053,7 +2052,7 @@ app.post("/payment", upload.single("paymentPhoto") , function (req, res, next) {
       res.redirect("/appreciate");
     })
 
-<<<<<<< HEAD
+
 
 
 
@@ -2086,7 +2085,7 @@ app.post("/faq", function (req, res) {
           console.log(result);
           console.log(Questions[0]);
           res.redirect("/faq");
-=======
+
     ques.save()
     .then((found) => {
      
@@ -2229,7 +2228,7 @@ app.post("/class-reg", upload.fields([
                 const message = "You are not provided any RegNo !! We will provide you soon";
                 res.render("classes-enrolled", { errorMessage: message });
             }
->>>>>>> 88d7a50fa0c87b7bf41e06a279a4a128e2e28f4d
+
         })
 
     })
@@ -2386,12 +2385,12 @@ async function deleteInactiveUsersFromRegistration() {
     const d = new Date();
     const currentMonth = d.getMonth();
 
-<<<<<<< HEAD
+
 
 
 app.listen(3000, function () {
   console.log("server is running on port 3000");
-=======
+
     // Calculate the month indexes for the last three months
     const threeMonthsAgo1 = (currentMonth - 2 + 12) % 12;
     const threeMonthsAgo2 = (currentMonth - 1 + 12) % 12;
@@ -2667,5 +2666,5 @@ cron.schedule('0 1 * * *', () => {
 app.listen(process.env.PORT || 3000,function()
 {
     console.log("server is running on port 3000");
->>>>>>> 88d7a50fa0c87b7bf41e06a279a4a128e2e28f4d
+
 })

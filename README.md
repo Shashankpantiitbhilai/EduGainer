@@ -1,6 +1,6 @@
 An Edtech startup which provides library and classes facilities at very resonable prices
 
-This website is a library and class amnagment website .It is using html,css,js,,ejs tenplates on frontend.
+This website is a library and class managment website .It is using html,css,js,ejs tenplates on frontend.
 In backend we are using nodejs,expressjs,googlemap api,
 Database-MongoDB
 
